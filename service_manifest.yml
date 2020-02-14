@@ -1,0 +1,54 @@
+name: FlareFLOSS
+version: 1
+description: Stacked/Decoded string detector.
+
+accepts: executable/windows/.*
+rejects: empty
+
+stage: CORE
+category: Static Analysis
+
+file_required: true
+timeout: 300
+disable_cache: false
+
+enabled: true
+is_external: false
+licence_count: 0
+
+config:
+  max_size: 85000
+  max_length: 5000
+  st_max_size: 0
+  enc_min_length: 7
+  stack_min_length: 7
+
+heuristics:
+  - heur_id: 1
+    name: Decoded_string
+    score: 10
+    filetype: '*'
+    description: Encoded string found
+
+  - heur_id: 2
+    name: IOC_decoded_string
+    score: 500
+    filetype: '*'
+    description: IOC found in decoded string
+
+  - heur_id: 3
+    name: Stacked_string
+    score: 10
+    filetype: '*'
+    description: Stacked string found
+
+  - heur_id: 4
+    name: IOC_stacked_string
+    score: 500
+    filetype: '*'
+    description: IOC found in stacked string
+
+docker_config:
+  image: cccs/assemblyline-service-floss:latest
+  cpu_cores: 1
+  ram_mb: 512
