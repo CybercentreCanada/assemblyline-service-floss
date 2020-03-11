@@ -25,25 +25,25 @@ config:
 
 heuristics:
   - heur_id: 1
-    name: Decoded_string
+    name: Decoded string
     score: 10
     filetype: '*'
     description: Encoded string found
 
   - heur_id: 2
-    name: IOC_decoded_string
+    name: IOC decoded string
     score: 500
     filetype: '*'
     description: IOC found in decoded string
 
   - heur_id: 3
-    name: Stacked_string
-    score: 10
+    name: Stacked string
+    score: 0
     filetype: '*'
     description: Stacked string found
 
   - heur_id: 4
-    name: IOC_stacked_string
+    name: IOC stacked string
     score: 500
     filetype: '*'
     description: IOC found in stacked string
