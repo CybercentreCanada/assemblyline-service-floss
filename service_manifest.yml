@@ -49,6 +49,6 @@ heuristics:
     description: IOC found in stacked string
 
 docker_config:
-  image: cccs/assemblyline-service-floss:latest
+  image: ${REGISTRY}cccs/assemblyline-service-floss:latest
   cpu_cores: 1
   ram_mb: 512

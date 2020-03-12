@@ -2,14 +2,17 @@ FROM cccs/assemblyline-v4-service-base:latest
 
 ENV SERVICE_PATH floss.floss.Floss
 
+RUN apt-get update && apt-get install -y \
+  curl\
+  python-levenshtein
+  #python-levenshtein gives a faster fuzzywuzzy
+
+
 # Get the latest FLOSS binary
 RUN curl -L https://github.com/fireeye/flare-floss/releases/download/v1.5.0/floss-1.5.0-GNU.Linux.zip -o floss.zip\
  && unzip floss.zip -d /opt\
  && chmod +x /opt/floss\
  && rm floss.zip
-
-RUN apt-get update && apt-get install -y \
-  python-levenshtein  #faster fuzzywuzzy
 
 # Switch to assemblyline user
 USER assemblyline
