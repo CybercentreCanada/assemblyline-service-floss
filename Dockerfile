@@ -7,6 +7,7 @@ USER root
 #python-levenshtein gives a faster fuzzywuzzy
 RUN apt-get update && apt-get install -y \
   python-levenshtein\
+  unzip\
   curl\
   && rm -rf /var/lib/apt/lists/*
 
