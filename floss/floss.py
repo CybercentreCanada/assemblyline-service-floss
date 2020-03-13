@@ -133,10 +133,15 @@ class Floss(ServiceBase):
         # Get static and stacked results
         p = subprocess.run([FLOSS, f'-n {stack_min_length}', '--no-decoded-strings', file_path],
                            capture_output=True, text=True)
-        p.check_returncode()
+        if p.returncode != 0:
+            raise RuntimeError(f'floss -n {stack_min_length} --no-decoded-strings '
+                                                f'returned a non-zero exit status {p.returncode}\n'
+                                                f'stderr:\n{p.stderr}')
 
         sections = [[y for y in x.splitlines() if y] for x in p.stdout.encode().split(b'\n\n')]
         for section in sections:
+            if not section:  # skip empty
+                continue
             match = re.match(rb'FLOSS static\s+.*\s+strings', section[0])
             if match:
                 result_section = static_result(section, max_length, st_max_size)
@@ -152,7 +157,10 @@ class Floss(ServiceBase):
         # Get decoded strings separately in expert mode
         decode_args = [FLOSS, f'-n {enc_min_length}', '-x', '--no-static-strings', '--no-stack-strings', file_path]
         p = subprocess.run(decode_args, capture_output=True, text=True)
-        p.check_returncode()
+        if p.returncode != 0:
+            raise RuntimeError(f'floss -n {enc_min_length} -x --no-static-strings --no-stack-strings '
+                                                f'returned a non-zero exit status {p.returncode}\n'
+                                                f'stderr:\n{p.stderr}')
         result_section = decoded_result(p.stdout.encode())
         if result_section:
             if p.stderr:
