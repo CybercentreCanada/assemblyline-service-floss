@@ -2,6 +2,9 @@
 
 This service uses FLOSS to find obfuscated strings such as stacked strings
 
+https://github.com/fireeye/flare-floss/
+Licensed under Apache License 2.0 (https://github.com/fireeye/flare-floss/blob/master/LICENSE.txt)
+
 #### Service Details
 
 NOTE: This service does not require you to buy any licence and is preinstalled and working after a default installation.
