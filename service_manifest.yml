@@ -1,6 +1,6 @@
-name: FlareFLOSS
+name: Floss
 version: 1
-description: Stacked/Decoded string detector.
+description: Automatically extract obfuscated strings from malware using FireEye labs obfuscated string solver.
 
 accepts: executable/windows/.*
 rejects: empty

@@ -135,8 +135,8 @@ class Floss(ServiceBase):
                            capture_output=True, text=True)
         if p.returncode != 0:
             raise RuntimeError(f'floss -n {stack_min_length} --no-decoded-strings '
-                                                f'returned a non-zero exit status {p.returncode}\n'
-                                                f'stderr:\n{p.stderr}')
+                               f'returned a non-zero exit status {p.returncode}\n'
+                               f'stderr:\n{p.stderr}')
 
         sections = [[y for y in x.splitlines() if y] for x in p.stdout.encode().split(b'\n\n')]
         for section in sections:
@@ -159,8 +159,8 @@ class Floss(ServiceBase):
         p = subprocess.run(decode_args, capture_output=True, text=True)
         if p.returncode != 0:
             raise RuntimeError(f'floss -n {enc_min_length} -x --no-static-strings --no-stack-strings '
-                                                f'returned a non-zero exit status {p.returncode}\n'
-                                                f'stderr:\n{p.stderr}')
+                               f'returned a non-zero exit status {p.returncode}\n'
+                               f'stderr:\n{p.stderr}')
         result_section = decoded_result(p.stdout.encode())
         if result_section:
             if p.stderr:
