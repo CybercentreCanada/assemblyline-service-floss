@@ -83,7 +83,7 @@ def decoded_result(text):
     result = ResultSection('FLARE FLOSS Decoded Strings', body_format=BODY_FORMAT.MEMORY_DUMP)
     ioc = False
     for string in strings:
-        ioc = ioc or ioc_tag(string, result, just_network=len(strings) > 1000)
+        ioc = ioc_tag(string, result, just_network=len(strings) > 1000) or ioc
         result.add_tag('file.string.decoded', string[:75])
     result.set_heuristic(2 if ioc else 1)
 
