@@ -3,7 +3,7 @@ version: 1
 description: Automatically extract obfuscated strings from malware using FireEye labs obfuscated string solver.
 
 accepts: executable/windows/.*
-rejects: empty
+rejects: executable/windows/com 
 
 stage: CORE
 category: Static Analysis
