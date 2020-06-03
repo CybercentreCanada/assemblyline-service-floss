@@ -1,5 +1,5 @@
 name: Floss
-version: 1
+version: $SERVICE_TAG
 description: Automatically extract obfuscated strings from malware using FireEye labs obfuscated string solver.
 
 accepts: executable/windows/.*
@@ -49,6 +49,6 @@ heuristics:
     description: IOC found in stacked string
 
 docker_config:
-  image: ${REGISTRY}cccs/assemblyline-service-floss:latest
+  image: ${REGISTRY}cccs/assemblyline-service-floss:$SERVICE_TAG
   cpu_cores: 1
   ram_mb: 512
