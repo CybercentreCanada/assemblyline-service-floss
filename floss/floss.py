@@ -133,37 +133,42 @@ class Floss(ServiceBase):
         # Get static and stacked results
         p = subprocess.run([FLOSS, f'-n {stack_min_length}', '--no-decoded-strings', file_path],
                            capture_output=True, text=True)
-        if p.returncode != 0:
+        if p.returncode < 0:
+            result.add_section(ResultSection('FLARE FLOSS stacked strings timed out'))
+        elif p.returncode > 0:
             raise RuntimeError(f'floss -n {stack_min_length} --no-decoded-strings '
                                f'returned a non-zero exit status {p.returncode}\n'
                                f'stderr:\n{p.stderr}')
-
-        sections = [[y for y in x.splitlines() if y] for x in p.stdout.encode().split(b'\n\n')]
-        for section in sections:
-            if not section:  # skip empty
-                continue
-            match = re.match(rb'FLOSS static\s+.*\s+strings', section[0])
-            if match:
-                result_section = static_result(section, max_length, st_max_size)
-                if result_section:
-                    result.add_section(result_section)
-                continue
-            match = re.match(rb'.*\d+ stackstring.*', section[0])
-            if match:
-                result_section = stack_result(section)
-                if result_section:
-                    result.add_section(result_section)
-                continue
+        else:
+            sections = [[y for y in x.splitlines() if y] for x in p.stdout.encode().split(b'\n\n')]
+            for section in sections:
+                if not section:  # skip empty
+                    continue
+                match = re.match(rb'FLOSS static\s+.*\s+strings', section[0])
+                if match:
+                    result_section = static_result(section, max_length, st_max_size)
+                    if result_section:
+                        result.add_section(result_section)
+                    continue
+                match = re.match(rb'.*\d+ stackstring.*', section[0])
+                if match:
+                    result_section = stack_result(section)
+                    if result_section:
+                        result.add_section(result_section)
+                    continue
         # Get decoded strings separately in expert mode
         decode_args = [FLOSS, f'-n {enc_min_length}', '-x', '--no-static-strings', '--no-stack-strings', file_path]
         p = subprocess.run(decode_args, capture_output=True, text=True)
-        if p.returncode != 0:
+        if p.returncode < 0:
+            result.add_section(ResultSection('FLARE FLOSS decoded strings timed out'))
+        elif p.returncode > 0:
             raise RuntimeError(f'floss -n {enc_min_length} -x --no-static-strings --no-stack-strings '
                                f'returned a non-zero exit status {p.returncode}\n'
                                f'stderr:\n{p.stderr}')
-        result_section = decoded_result(p.stdout.encode())
-        if result_section:
-            if p.stderr:
-                result_section.add_line("Flare Floss generated error messages while analyzing:")
-                result_section.add_line(p.stderr)
-            result.add_section(result_section)
+        else:
+            result_section = decoded_result(p.stdout.encode())
+            if result_section:
+                if p.stderr:
+                    result_section.add_line("Flare Floss generated error messages while analyzing:")
+                    result_section.add_line(p.stderr)
+                result.add_section(result_section)
