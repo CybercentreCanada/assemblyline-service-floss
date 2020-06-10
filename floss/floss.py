@@ -92,9 +92,6 @@ def decoded_result(text):
 
 
 class Floss(ServiceBase):
-    def __init__(self, config=None):
-        super(Floss, self).__init__(config)
-
     def start(self):
         self.log.info('FLOSS service started')
 
@@ -106,12 +103,10 @@ class Floss(ServiceBase):
         result = Result()
         request.result = result
         file_path = request.file_path
-
         if request.deep_scan:
             # Maximum size of submitted file to run this service:
             max_size = 200000
-            # String length maximum
-            # Used in basic ASCII and UNICODE modules:
+            # String length maximum, used in basic ASCII and UNICODE modules:
             max_length = 1000000
             # String list maximum size
             # List produced by basic ASCII and UNICODE module results and will determine
@@ -132,7 +127,7 @@ class Floss(ServiceBase):
 
         # Get static and stacked results
         p = subprocess.run([FLOSS, f'-n {stack_min_length}', '--no-decoded-strings', file_path],
-                           capture_output=True, text=True)
+                           capture_output=True, text=True, check=False)
         if p.returncode < 0:
             result.add_section(ResultSection('FLARE FLOSS stacked strings timed out'))
         elif p.returncode > 0:
@@ -158,7 +153,7 @@ class Floss(ServiceBase):
                     continue
         # Get decoded strings separately in expert mode
         decode_args = [FLOSS, f'-n {enc_min_length}', '-x', '--no-static-strings', '--no-stack-strings', file_path]
-        p = subprocess.run(decode_args, capture_output=True, text=True)
+        p = subprocess.run(decode_args, capture_output=True, text=True, check=False)
         if p.returncode < 0:
             result.add_section(ResultSection('FLARE FLOSS decoded strings timed out'))
         elif p.returncode > 0:
