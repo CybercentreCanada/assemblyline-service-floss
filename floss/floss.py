@@ -1,6 +1,8 @@
 import re
 import subprocess
 
+from subprocess import CalledProcessError, TimeoutExpired
+
 from fuzzywuzzy import process
 
 from assemblyline_v4_service.common.base import ServiceBase
@@ -9,7 +11,6 @@ from assemblyline_v4_service.common.balbuzard.patterns import PatternMatch
 
 FLOSS = '/opt/floss'
 MAX_TAG_LEN = 75
-
 
 def group_strings(strings):
     # prevent double iteration if strings is a generator
@@ -122,15 +123,18 @@ class Floss(ServiceBase):
             enc_min_length = self.config.get('enc_min_length', 7)
             stack_min_length = self.config.get('stack_min_length', 7)
 
+        timeout = self.service_attributes.timeout/2-5
+
         if len(request.file_contents) > max_size:
             return
 
         # Get static and stacked results
-        p = subprocess.run([FLOSS, f'-n {stack_min_length}', '--no-decoded-strings', file_path],
-                           capture_output=True, text=True, check=False)
-        if p.returncode < 0:
+        try:
+            p = subprocess.run([FLOSS, f'-n {stack_min_length}', '--no-decoded-strings', file_path],
+                               capture_output=True, text=True, timeout=timeout, check=True)
+        except TimeoutExpired:
             result.add_section(ResultSection('FLARE FLOSS stacked strings timed out'))
-        elif p.returncode > 0:
+        except CalledProcessError:
             raise RuntimeError(f'floss -n {stack_min_length} --no-decoded-strings '
                                f'returned a non-zero exit status {p.returncode}\n'
                                f'stderr:\n{p.stderr}')
@@ -151,12 +155,14 @@ class Floss(ServiceBase):
                     if result_section:
                         result.add_section(result_section)
                     continue
+
         # Get decoded strings separately in expert mode
-        decode_args = [FLOSS, f'-n {enc_min_length}', '-x', '--no-static-strings', '--no-stack-strings', file_path]
-        p = subprocess.run(decode_args, capture_output=True, text=True, check=False)
-        if p.returncode < 0:
+        try:
+            decode_args = [FLOSS, f'-n {enc_min_length}', '-x', '--no-static-strings', '--no-stack-strings', file_path]
+            p = subprocess.run(decode_args, capture_output=True, text=True, timeout=timeout, check=True)
+        except TimeoutExpired:
             result.add_section(ResultSection('FLARE FLOSS decoded strings timed out'))
-        elif p.returncode > 0:
+        except CalledProcessError:
             raise RuntimeError(f'floss -n {enc_min_length} -x --no-static-strings --no-stack-strings '
                                f'returned a non-zero exit status {p.returncode}\n'
                                f'stderr:\n{p.stderr}')
