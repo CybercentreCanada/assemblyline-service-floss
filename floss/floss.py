@@ -21,9 +21,10 @@ def group_strings(strings):
     choices = set(string for string in strings)
     picked = set()
     for string in strings:
-        if string in picked:
+        if string == '' or string in picked:
             continue
-        sim_strings = [ls[0] for ls in process.extract(string, choices, limit=50) if ls[1] > 75]
+        sim_strings = [ls[0] for ls in
+                process.extract(string, choices, limit=50) if ls[1] > 75]
         for s in sim_strings:
             choices.remove(s)
             picked.add(s)
