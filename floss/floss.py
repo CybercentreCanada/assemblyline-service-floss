@@ -104,6 +104,8 @@ class Floss(ServiceBase):
 
     def execute(self, request):
         """ Main module see README for details. """
+        start = time.time()
+        
         result = Result()
         request.result = result
         file_path = request.file_path
@@ -126,12 +128,11 @@ class Floss(ServiceBase):
             enc_min_length = self.config.get('enc_min_length', 7)
             stack_min_length = self.config.get('stack_min_length', 7)
 
-        timeout = self.service_attributes.timeout-15
+        timeout = self.service_attributes.timeout-30
 
         if len(request.file_contents) > max_size:
             return
 
-        start = time.time()
         stack = subprocess.Popen([FLOSS, f'-n {stack_min_length}', '--no-decoded-strings', file_path],
                                  stdout=PIPE, stderr=PIPE, text=True)
         decode_args = [FLOSS, f'-n {enc_min_length}', '-x', '--no-static-strings', '--no-stack-strings', file_path]
@@ -158,7 +159,7 @@ class Floss(ServiceBase):
                     stack.stdout.close()
                     stack = None
                 break
-            time.sleep(1)
+            time.sleep(10)
         else:
             stack.kill()
             stack.stdout.close()
