@@ -137,39 +137,21 @@ class Floss(ServiceBase):
                                  stdout=PIPE, stderr=PIPE, text=True)
         decode_args = [FLOSS, f'-n {enc_min_length}', '-x', '--no-static-strings', '--no-stack-strings', file_path]
         decode = subprocess.Popen(decode_args, stdout=PIPE, stderr=PIPE, text=True)
-        while time.time()-start < timeout:
-            if stack.poll():
-                stack_out, stack_err = stack.communicate()
-                try:
-                    dec_out, dec_err = decode.communicate(timeout=min(timeout+start-time.time(), 1))
-                except TimeoutExpired:
-                    decode.kill()
-                    decode.stderr.close()
-                    decode.stdout.close()
-                    decode = None
-                break
-
-            if decode.poll():
-                dec_out, dec_err = decode.communicate()
-                try:
-                    stack_out, stack_err = stack.communicate(timeout=min(timeout+start-time.time(), 1))
-                except TimeoutExpired:
-                    stack.kill()
-                    stack.stderr.close()
-                    stack.stdout.close()
-                    stack = None
-                break
-            time.sleep(10)
-        else:
+        try:
+            stack_out, stack_err = stack.communicate(timeout=max(timeout+start-time.time(), 5))
+        except TimeoutExpired:
             stack.kill()
             stack.stdout.close()
             stack.stderr.close()
             stack = None
+        try:
+            dec_out, dec_err = decode.communicate(timeout=max(timeout+start-time.time(), 5))
+        except TimeoutExpired:
             decode.kill()
             decode.stdout.close()
             decode.stderr.close()
             decode = None
- 
+
         if stack is None:
             result.add_section(ResultSection('FLARE FLOSS stacked strings timed out'))
         elif stack.returncode != 0:
