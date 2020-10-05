@@ -3,7 +3,7 @@ version: $SERVICE_TAG
 description: Automatically extract obfuscated strings from malware using FireEye labs obfuscated string solver.
 
 accepts: executable/windows/.*
-rejects: executable/windows/com 
+rejects: executable/windows/com|executable/windows/dos 
 
 stage: CORE
 category: Static Analysis
