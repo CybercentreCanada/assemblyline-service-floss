@@ -128,7 +128,7 @@ class Floss(ServiceBase):
             enc_min_length = self.config.get('enc_min_length', 7)
             stack_min_length = self.config.get('stack_min_length', 7)
 
-        timeout = self.service_attributes.timeout-30
+        timeout = self.service_attributes.timeout-50
 
         if len(request.file_contents) > max_size:
             return
@@ -138,21 +138,21 @@ class Floss(ServiceBase):
         decode_args = [FLOSS, f'-n {enc_min_length}', '-x', '--no-static-strings', '--no-stack-strings', file_path]
         decode = subprocess.Popen(decode_args, stdout=PIPE, stderr=PIPE, text=True)
         try:
-            stack_out, stack_err = stack.communicate(timeout=max(timeout+start-time.time(), 5))
+            stack_out, stack_err = stack.communicate(timeout=max(timeout+start-time.time(), 10))
         except TimeoutExpired:
             stack.kill()
             stack.stdout.close()
             stack.stderr.close()
             stack = None
         try:
-            dec_out, dec_err = decode.communicate(timeout=max(timeout+start-time.time(), 5))
+            dec_out, dec_err = decode.communicate(timeout=max(timeout+start-time.time(), 10))
         except TimeoutExpired:
             decode.kill()
             decode.stdout.close()
             decode.stderr.close()
             decode = None
 
-        if stack is None:
+        if stack is None or stack.returncode < 0:
             result.add_section(ResultSection('FLARE FLOSS stacked strings timed out'))
         elif stack.returncode != 0:
             raise RuntimeError(f'floss -n {stack_min_length} --no-decoded-strings '
@@ -177,7 +177,7 @@ class Floss(ServiceBase):
                     continue
 
         # Process decoded strings results
-        if decode is None:
+        if decode is None or decode.returncode < 0:
             result.add_section(ResultSection('FLARE FLOSS decoded strings timed out'))
         elif decode.returncode != 0:
             raise RuntimeError(f'floss -n {enc_min_length} -x --no-static-strings --no-stack-strings '
