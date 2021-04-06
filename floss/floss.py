@@ -1,19 +1,24 @@
+""" FLOSS service """
+
 import re
-import subprocess
 import time
 
-from subprocess import PIPE, TimeoutExpired
+from subprocess import Popen, PIPE, TimeoutExpired
+from typing import Iterable, List, Optional, Tuple
 
-from fuzzywuzzy import process
+from fuzzywuzzy.process import extract
 
+from assemblyline.common.str_utils import safe_str
 from assemblyline_v4_service.common.base import ServiceBase
+from assemblyline_v4_service.common.request import ServiceRequest
 from assemblyline_v4_service.common.result import Result, ResultSection, BODY_FORMAT, Heuristic
 from assemblyline_v4_service.common.balbuzard.patterns import PatternMatch
 
 FLOSS = '/opt/floss'
 MAX_TAG_LEN = 75
 
-def group_strings(strings):
+def group_strings(strings: Iterable[str]) -> List[List[str]]:
+    """ Groups strings by similarity """
     # prevent double iteration if strings is a generator
     strings = list(strings)
 
@@ -24,7 +29,7 @@ def group_strings(strings):
         if string in picked:
             continue
         sim_strings = [ls[0] for ls in
-                       process.extract(string, choices, limit=50) if ls[1] > 75]
+                extract(string, choices, limit=50) if ls[1] > 75]
         for s in sim_strings:
             choices.remove(s)
             picked.add(s)
@@ -33,9 +38,17 @@ def group_strings(strings):
     return groups
 
 
-def ioc_tag(string, result, just_network=False):
+def ioc_tag(text: bytes, result: ResultSection, just_network: bool = False) -> bool:
+    """ Tags iocs found in text to result
+
+    text: text to search for iocs
+    result: ResultSection to tag with iocs
+    just_network: whether non-network iocs should be skipped
+
+    returns: whether iocs are found
+    """
     pattern = PatternMatch()
-    ioc = pattern.ioc_match(string, bogon_ip=True, just_network=just_network)
+    ioc = pattern.ioc_match(text, bogon_ip=True, just_network=just_network)
     for kind, values in ioc.items():
         for val in values:
             result.add_tag(kind, val[:MAX_TAG_LEN])
@@ -43,20 +56,22 @@ def ioc_tag(string, result, just_network=False):
     return bool(ioc)
 
 
-def static_result(section, max_length, st_max_size):
+def static_result(section: List[bytes], max_length: int, st_max_size: int) -> Optional[ResultSection]:
+    """ Generates a ResultSection from floss static strings output section """
     header = section[0]
-    strings = section[1:]
+    lines = section[1:]
 
-    result = ResultSection(header, body_format=BODY_FORMAT.MEMORY_DUMP)
-    for string in strings:
-        if len(string) > max_length:
+    result = ResultSection(header.decode(errors='ignore'), body_format=BODY_FORMAT.MEMORY_DUMP)
+    for line in lines:
+        if len(line) > max_length:
             continue
-        if ioc_tag(string, result, just_network=len(strings) > st_max_size):
-            result.add_line(string)
+        if ioc_tag(line, result, just_network=len(lines) > st_max_size):
+            result.add_line(line.decode(errors='ignore'))
     return result if result.body else None
 
 
-def stack_result(section):
+def stack_result(section: List[bytes]) -> Optional[ResultSection]:
+    """ Generates a ResultSection from floss stacked strings output section """
     result = ResultSection('FLARE FLOSS Sacked Strings', body_format=BODY_FORMAT.MEMORY_DUMP,
                            heuristic=Heuristic(3))
     strings = section[1:]
@@ -76,8 +91,8 @@ def stack_result(section):
 
     return result
 
-
-def decoded_result(text):
+def decoded_result(text: bytes) -> Optional[ResultSection]:
+    """ Generates a ResultSection from floss decoded strings output section """
     lines = text.splitlines()
     lines[0] = b'Most likely decoding functions:'
     body = b'\n'.join(lines[:-1])
@@ -96,16 +111,21 @@ def decoded_result(text):
 
 
 class Floss(ServiceBase):
-    def start(self):
+    """ Service using the FireEye Labs Obfuscated String Solver
+
+    see https://github.com/fireeye/flare-floss for documentation
+    on the FLOSS tool
+    """
+    def start(self) -> None:
         self.log.info('FLOSS service started')
 
-    def stop(self):
+    def stop(self) -> None:
         self.log.info('FLOSS service ended')
 
-    def execute(self, request):
+    def execute(self, request: ServiceRequest) -> None:
         """ Main module see README for details. """
         start = time.time()
-        
+
         result = Result()
         request.result = result
         file_path = request.file_path
@@ -127,39 +147,27 @@ class Floss(ServiceBase):
             st_max_size = self.config.get('st_max_size', 0)
             enc_min_length = self.config.get('enc_min_length', 7)
             stack_min_length = self.config.get('stack_min_length', 7)
-
         timeout = self.service_attributes.timeout-50
 
         if len(request.file_contents) > max_size:
             return
 
-        stack = subprocess.Popen([FLOSS, f'-n {stack_min_length}', '--no-decoded-strings', file_path],
-                                 stdout=PIPE, stderr=PIPE, text=True)
+        stack_args = [FLOSS, f'-n {stack_min_length}', '--no-decoded-strings', file_path]
         decode_args = [FLOSS, f'-n {enc_min_length}', '-x', '--no-static-strings', '--no-stack-strings', file_path]
-        decode = subprocess.Popen(decode_args, stdout=PIPE, stderr=PIPE, text=True)
-        try:
-            stack_out, stack_err = stack.communicate(timeout=max(timeout+start-time.time(), 10))
-        except TimeoutExpired:
-            stack.kill()
-            stack.stdout.close()
-            stack.stderr.close()
-            stack = None
-        try:
-            dec_out, dec_err = decode.communicate(timeout=max(timeout+start-time.time(), 10))
-        except TimeoutExpired:
-            decode.kill()
-            decode.stdout.close()
-            decode.stderr.close()
-            decode = None
-
-        if stack is None or stack.returncode < 0:
-            result.add_section(ResultSection('FLARE FLOSS stacked strings timed out'))
-        elif stack.returncode != 0:
-            raise RuntimeError(f'floss -n {stack_min_length} --no-decoded-strings '
-                               f'returned a non-zero exit status {stack.returncode}\n'
-                               f'stderr:\n{stack_err}')
-        else:
-            sections = [[y for y in x.splitlines() if y] for x in stack_out.encode().split(b'\n\n')]
+        with Popen(stack_args, stdout=PIPE, stderr=PIPE) as stack, \
+                Popen(decode_args, stdout=PIPE, stderr=PIPE) as decode:
+            stack_out, _, timed_out = self.handle_process(stack, timeout+start-time.time(),
+                    ' '.join(stack_args))
+            if timed_out:
+                result.add_section(ResultSection('FLARE FLOSS stacked strings timed out'))
+                self.log.warning(f'floss stacked strings timed out for sample {request.sha256}')
+            dec_out, dec_err, timed_out = self.handle_process(decode, timeout+start-time.time(),
+                    ' '.join(decode_args))
+            if timed_out:
+                result.add_section(ResultSection('FLARE FLOSS decoded strings timed out'))
+                self.log.warning(f'floss decoded strings timed out for sample {request.sha256}')
+        if stack_out:
+            sections = [[y for y in x.splitlines() if y] for x in stack_out.split(b'\n\n')]
             for section in sections:
                 if not section:  # skip empty
                     continue
@@ -177,16 +185,31 @@ class Floss(ServiceBase):
                     continue
 
         # Process decoded strings results
-        if decode is None or decode.returncode < 0:
-            result.add_section(ResultSection('FLARE FLOSS decoded strings timed out'))
-        elif decode.returncode != 0:
-            raise RuntimeError(f'floss -n {enc_min_length} -x --no-static-strings --no-stack-strings '
-                               f'returned a non-zero exit status {decode.returncode}\n'
-                               f'stderr:\n{dec_err}')
-        else:
-            result_section = decoded_result(dec_out.encode())
+        if dec_out:
+            result_section = decoded_result(dec_out)
             if result_section:
                 if dec_err:
                     result_section.add_line("Flare Floss generated error messages while analyzing:")
-                    result_section.add_line(dec_err)
+                    result_section.add_line(safe_str(dec_err))
                 result.add_section(result_section)
+
+    def handle_process(self, process: Popen, timeout: int, command_name: str) -> Tuple[bytes, bytes, bool]:
+        """ Helper method for handling a subprocess
+
+        process: the running subprocess
+        timeout: the length of time to wait for the subprocess
+        command_name: the name of the command running in the subprocess
+
+        returns: the standard output and error of the process
+        """
+        timed_out = False
+        try:
+            output, error = process.communicate(timeout=max(timeout, 10))
+            if process.returncode != 0:
+                self.log.error(f'"{command_name}" returned a non-zero exit status'
+                               f'{process.returncode}\nstderr:\n{safe_str(error)}')
+        except TimeoutExpired:
+            process.kill()
+            output, error = process.communicate()
+            timed_out = True
+        return output, error, timed_out

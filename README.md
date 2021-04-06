@@ -24,14 +24,11 @@ This service does the following:
 
 #### Result Output
 
-1. Static Strings (ASCII, UNICODE, BASE64):
+1. Static Strings (ASCII, UNICODE):
     * Strings matching IOC patterns of interest
-2. ASCII Hex Strings:
-    * Content extraction of ascii hex data successfully decoded (any data over 500 bytes)
-    * IOC pattern matching for any successfully decoded data 
-3. FF Decoded Strings:
+2. FF Decoded Strings:
     * All strings 
     * Strings matching IOC patterns of interest
-4. FF Stacked Strings:
+3. FF Stacked Strings:
     * All strings, group by likeness (determined by fuzzywuzzy library)
     * Strings matching IOC patterns of interest
