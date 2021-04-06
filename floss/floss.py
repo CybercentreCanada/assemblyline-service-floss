@@ -206,7 +206,7 @@ class Floss(ServiceBase):
         try:
             output, error = process.communicate(timeout=max(timeout, 10))
             if process.returncode != 0:
-                self.log.error(f'{command_name} returned a non-zero exit status'
+                self.log.error(f'"{command_name}" returned a non-zero exit status'
                                f'{process.returncode}\nstderr:\n{safe_str(error)}')
         except TimeoutExpired:
             process.kill()
