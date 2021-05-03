@@ -2,7 +2,7 @@
 
 import re
 import time
-from subprocess import TimeoutExpired, run
+from subprocess import TimeoutExpired, Popen, PIPE
 from typing import Iterable, List, Optional, Tuple
 
 from fuzzywuzzy.process import extract
@@ -157,15 +157,17 @@ class Floss(ServiceBase):
         stack_args = [FLOSS, f'-n {stack_min_length}', '--no-decoded-strings', file_path]
         decode_args = [FLOSS, f'-n {enc_min_length}', '-x', '--no-static-strings', '--no-stack-strings', file_path]
 
-        stack_out, stack_err, timed_out = self.handle_process(stack_args, timeout+start-time.time())
-        if timed_out:
-            result.add_section(ResultSection('FLARE FLOSS stacked strings timed out'))
-            self.log.warning(f'floss stacked strings timed out for sample {request.sha256}')
+        with Popen(stack_args, stdout=PIPE, stderr=PIPE) as stack, \
+                Popen(decode_args, stdout=PIPE, stderr=PIPE) as decode:
+            stack_out, _, timed_out = self.handle_process(stack, timeout+start-time.time(), ' '.join(stack_args))
+            if timed_out:
+                result.add_section(ResultSection('FLARE FLOSS stacked strings timed out'))
+                self.log.warning(f'floss stacked strings timed out for sample {request.sha256}')
 
-        dec_out, dec_err, timed_out = self.handle_process(decode_args, timeout+start-time.time())
-        if timed_out:
-            result.add_section(ResultSection('FLARE FLOSS decoded strings timed out'))
-            self.log.warning(f'floss decoded strings timed out for sample {request.sha256}')
+            dec_out, dec_err, timed_out = self.handle_process(decode, timeout+start-time.time(), ' '.join(decode_args))
+            if timed_out:
+                result.add_section(ResultSection('FLARE FLOSS decoded strings timed out'))
+                self.log.warning(f'floss decoded strings timed out for sample {request.sha256}')
 
         if stack_out:
             sections = [[y for y in x.splitlines() if y] for x in stack_out.split(b'\n\n')]
@@ -194,23 +196,26 @@ class Floss(ServiceBase):
                     result_section.add_line(safe_str(dec_err))
                 result.add_section(result_section)
 
-    def handle_process(self, args: List[str], timeout: int) -> Tuple[bytes, bytes, bool]:
+    def handle_process(self, process: Popen, timeout: int, command_name: str) -> Tuple[bytes, bytes, bool]:
         """ Helper method for handling a subprocess
 
-        args: the command+args of the subprocess in list format
+        process: the running subprocess
         timeout: the length of time to wait for the subprocess
+        command_name: the name of the command running in the subprocess
+
         returns: the standard output and error of the process + whether if the processed timed out
         """
-        output, error, timed_out = "", "", False
         try:
-            process = run(args, capture_output=True, timeout=timeout)
-            if process.returncode != 0:
-                cmd = ' '.join(args)
-                self.log.error(f'"{cmd}" returned a non-zero exit status'
-                               f'{process.returncode}\nstderr:\n{safe_str(process.stderr)}')
+            output, error = process.communicate(timeout=max(timeout, 10))
+            if process.returncode == -9:
+                self.log.warning("Floss subprocess {command_name} killed before timeout")
+                timed_out=True
+            elif process.returncode != 0:
+                self.log.error(f'"{command_name}" returned a non-zero exit status'
+                               f'{process.returncode}\nstderr:\n{safe_str(error)}')
         except TimeoutExpired:
+            process.kill()
+            output, error = process.communicate()
             timed_out = True
-        finally:
-            output, error = process.stdout, process.stderr
 
         return output, error, timed_out
