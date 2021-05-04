@@ -205,11 +205,12 @@ class Floss(ServiceBase):
 
         returns: the standard output and error of the process + whether if the processed timed out
         """
+        timed_out = False
         try:
             output, error = process.communicate(timeout=max(timeout, 10))
             if process.returncode == -9:
                 self.log.warning("Floss subprocess {command_name} killed before timeout")
-                timed_out=True
+                timed_out = True
             elif process.returncode != 0:
                 self.log.error(f'"{command_name}" returned a non-zero exit status'
                                f'{process.returncode}\nstderr:\n{safe_str(error)}')
