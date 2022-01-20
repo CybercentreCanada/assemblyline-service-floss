@@ -196,7 +196,7 @@ class Floss(ServiceBase):
                     result_section.add_line(safe_str(dec_err))
                 result.add_section(result_section)
 
-    def handle_process(self, process: Popen, timeout: int, command_name: str) -> Tuple[bytes, bytes, bool]:
+    def handle_process(self, process: Popen[bytes], timeout: float, command_name: str) -> Tuple[bytes, bytes, bool]:
         """ Helper method for handling a subprocess
 
         process: the running subprocess
@@ -211,7 +211,8 @@ class Floss(ServiceBase):
             if process.returncode == -9:
                 self.log.warning("Floss subprocess {command_name} killed before timeout")
                 timed_out = True
-            elif process.returncode != 0:
+            # There's a vivisect bug that can't be fixed until a new version is used in floss
+            elif process.returncode != 0 and b'Vivisect failed to load the input file: float division by zero' not in error:
                 self.log.error(f'"{command_name}" returned a non-zero exit status'
                                f'{process.returncode}\nstderr:\n{safe_str(error)}')
         except TimeoutExpired:
