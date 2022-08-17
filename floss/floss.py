@@ -74,6 +74,7 @@ def stack_result(section: List[bytes]) -> Optional[ResultSection]:
     """ Generates a ResultSection from floss stacked strings output section """
     result = ResultSection('FLARE FLOSS Sacked Strings', body_format=BODY_FORMAT.MEMORY_DUMP,
                            heuristic=Heuristic(3))
+    assert result.heuristic
     strings = section[1:]
 
     if not strings:
@@ -85,9 +86,10 @@ def stack_result(section: List[bytes]) -> Optional[ResultSection]:
                             body_format=BODY_FORMAT.MEMORY_DUMP)
         for string in group:
             ioc_tag(string.encode(), res, just_network=len(group) > 1000)
-        if res.tags:
-            res.set_heuristic(4)
         result.add_subsection(res)
+
+    if any(res.tags for res in result.subsections):
+        result.heuristic.add_signature_id('stacked_ioc')
 
     return result
 
@@ -97,15 +99,19 @@ def decoded_result(text: bytes) -> Optional[ResultSection]:
     lines = text.splitlines()
     lines[0] = b'Most likely decoding functions:'
     body = b'\n'.join(lines[:-1])
+
     strings = re.findall(rb'^\[[A-Z]+\]\s+0x[0-9A-F]+\s+(.+)', body, flags=re.M)
     if not strings:
         return None
-    result = ResultSection('FLARE FLOSS Decoded Strings', body_format=BODY_FORMAT.MEMORY_DUMP)
+
+    result = ResultSection('FLARE FLOSS Decoded Strings', body_format=BODY_FORMAT.MEMORY_DUMP, heuristic=Heuristic(1))
+    assert result.heuristic
     ioc = False
     for string in strings:
         ioc = ioc_tag(string, result, just_network=len(strings) > 1000) or ioc
         result.add_tag('file.string.decoded', string[:75])
-    result.set_heuristic(2 if ioc else 1)
+    if ioc:
+        result.heuristic.add_signature_id('decoded_ioc')
 
     result.add_line(body.decode())
     return result
