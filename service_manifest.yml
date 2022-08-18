@@ -27,26 +27,18 @@ heuristics:
   - heur_id: 1
     name: Decoded string
     score: 10
+    signature_score_map:
+      decoded_ioc: 500
     filetype: '*'
     description: Encoded string found
-
-  - heur_id: 2
-    name: IOC decoded string
-    score: 500
-    filetype: '*'
-    description: IOC found in decoded string
 
   - heur_id: 3
     name: Stacked string
     score: 0
+    signature_score_map:
+      stacked_ioc: 500
     filetype: '*'
     description: Stacked string found
-
-  - heur_id: 4
-    name: IOC stacked string
-    score: 500
-    filetype: '*'
-    description: IOC found in stacked string
 
 docker_config:
   image: ${REGISTRY}cccs/assemblyline-service-floss:$SERVICE_TAG
