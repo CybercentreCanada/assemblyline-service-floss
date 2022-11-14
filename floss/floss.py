@@ -215,7 +215,7 @@ class Floss(ServiceBase):
         try:
             output, error = process.communicate(timeout=max(timeout, 10))
             if process.returncode == -9:
-                self.log.warning("Floss subprocess {command_name} killed before timeout")
+                self.log.warning(f"Floss subprocess {command_name} killed before timeout")
                 timed_out = True
             # There's a vivisect bug that can't be fixed until a new version is used in floss
             elif process.returncode != 0 and b'Vivisect failed to load the input file: float division by zero' not in error:
