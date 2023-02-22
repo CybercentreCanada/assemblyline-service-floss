@@ -124,12 +124,6 @@ class Floss(ServiceBase):
     on the FLOSS tool
     """
 
-    def start(self) -> None:
-        self.log.info('FLOSS service started')
-
-    def stop(self) -> None:
-        self.log.info('FLOSS service ended')
-
     def execute(self, request: ServiceRequest) -> None:
         """ Main module see README for details. """
         start = time.time()
