@@ -72,7 +72,7 @@ def static_result(section: List[bytes], max_length: int, st_max_size: int) -> Op
 
 def stack_result(section: List[bytes]) -> Optional[ResultSection]:
     """ Generates a ResultSection from floss stacked strings output section """
-    result = ResultSection('FLARE FLOSS Sacked Strings', body_format=BODY_FORMAT.MEMORY_DUMP,
+    result = ResultSection('FLARE FLOSS Stacked Strings', body_format=BODY_FORMAT.MEMORY_DUMP,
                            heuristic=Heuristic(3))
     assert result.heuristic
     strings = section[1:]
