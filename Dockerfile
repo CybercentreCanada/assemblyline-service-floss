@@ -17,6 +17,10 @@ RUN curl -L https://github.com/fireeye/flare-floss/releases/download/v1.7.0/flos
 # Switch to assemblyline user
 USER assemblyline
 
+# Install python dependencies
+COPY requirements.txt requirements.txt
+RUN pip install --no-cache-dir --user --requirement requirements.txt && rm -rf ~/.cache/pip
+
 # Copy service code
 WORKDIR /opt/al_service
 COPY . .
