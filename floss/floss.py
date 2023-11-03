@@ -6,10 +6,11 @@ from subprocess import PIPE, Popen, TimeoutExpired
 from typing import Iterable, List, Optional, Tuple
 
 from assemblyline.common.str_utils import safe_str
+from assemblyline.odm.models.result import BODY_FORMAT
 from assemblyline_service_utilities.common.balbuzard.patterns import PatternMatch
 from assemblyline_v4_service.common.base import ServiceBase
 from assemblyline_v4_service.common.request import ServiceRequest
-from assemblyline_v4_service.common.result import BODY_FORMAT, Heuristic, Result, ResultSection
+from assemblyline_v4_service.common.result import Heuristic, Result, ResultSection
 from fuzzywuzzy.process import extract
 
 FLOSS = '/opt/floss'
