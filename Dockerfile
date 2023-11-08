@@ -5,14 +5,14 @@ ENV SERVICE_PATH floss.floss.Floss
 
 USER root
 
-#python-levenshtein gives a faster fuzzywuzzy
+# python-levenshtein gives a faster fuzzywuzzy
 RUN apt-get update && apt-get install -y python-levenshtein unzip curl && rm -rf /var/lib/apt/lists/*
 
 # Get the latest FLOSS binary
 RUN curl -L https://github.com/fireeye/flare-floss/releases/download/v1.7.0/floss-v1.7.0-linux.zip -o floss.zip \
- && unzip floss.zip -d /opt \
- && chmod +x /opt/floss \
- && rm floss.zip
+    && unzip floss.zip -d /opt \
+    && chmod +x /opt/floss \
+    && rm floss.zip
 
 # Switch to assemblyline user
 USER assemblyline

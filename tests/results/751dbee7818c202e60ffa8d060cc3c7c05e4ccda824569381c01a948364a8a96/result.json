@@ -1,0 +1,56 @@
+{
+  "extra": {
+    "drop_file": false,
+    "score": 0,
+    "sections": [
+      {
+        "auto_collapse": false,
+        "body": "https://onedrive.live.com/download?resid=969678C66048EAA5%21436&authkey=!AL_5ju6k6aSBOFk",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 0,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {
+          "network": {
+            "static": {
+              "domain": [
+                "onedrive.live.com"
+              ],
+              "uri": [
+                "https://onedrive.live.com/download?resid=969678C66048EAA5%21436&authkey=!AL"
+              ]
+            }
+          }
+        },
+        "title_text": "FLOSS static Unicode strings",
+        "zeroize_on_tag_safe": false
+      }
+    ]
+  },
+  "files": {
+    "extracted": [],
+    "supplementary": []
+  },
+  "results": {
+    "heuristics": [],
+    "tags": {
+      "network.static.domain": [
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "onedrive.live.com"
+        }
+      ],
+      "network.static.uri": [
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "https://onedrive.live.com/download?resid=969678C66048EAA5%21436&authkey=!AL"
+        }
+      ]
+    },
+    "temp_submission_data": {}
+  }
+}
