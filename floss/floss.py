@@ -13,7 +13,6 @@ from assemblyline_v4_service.common.result import BODY_FORMAT, Heuristic, Result
 from fuzzywuzzy.process import extract
 
 FLOSS = "/opt/floss"
-MAX_TAG_LEN = 75
 
 
 def group_strings(strings: Iterable[str]) -> List[List[str]]:
@@ -49,7 +48,7 @@ def ioc_tag(text: bytes, result: ResultSection, just_network: bool = False) -> b
     ioc = pattern.ioc_match(text, bogon_ip=True, just_network=just_network)
     for kind, values in ioc.items():
         for val in values:
-            result.add_tag(kind, val[:MAX_TAG_LEN])
+            result.add_tag(kind, val)
     # Return whether any IOCs were found
     return bool(ioc)
 
