@@ -3,7 +3,7 @@ version: $SERVICE_TAG
 description: Automatically extract obfuscated strings from malware using FireEye labs obfuscated string solver.
 
 accepts: executable/windows/.*
-rejects: executable/windows/com|executable/windows/dos 
+rejects: executable/windows/com|executable/windows/dos
 
 stage: CORE
 category: Static Analysis
@@ -29,7 +29,7 @@ heuristics:
     score: 10
     signature_score_map:
       decoded_ioc: 500
-    filetype: '*'
+    filetype: '.*'
     description: Encoded string found
 
   - heur_id: 3
@@ -37,7 +37,7 @@ heuristics:
     score: 0
     signature_score_map:
       stacked_ioc: 500
-    filetype: '*'
+    filetype: '.*'
     description: Stacked string found
 
 docker_config:

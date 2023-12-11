@@ -1,0 +1,261 @@
+{
+  "extra": {
+    "drop_file": false,
+    "score": 500,
+    "sections": [
+      {
+        "auto_collapse": false,
+        "body": "http://ocsp.thawte.com0\n.http://crl.thawte.com/ThawteTimestampingCA.crl0\nhttp://ts-ocsp.ws.symantec.com07\n+http://ts-aia.ws.symantec.com/tss-ca-g2.cer0<\n+http://ts-crl.ws.symantec.com/tss-ca-g2.crl0(\nDhttp://crl.microsoft.com/pki/crl/products/MicrosoftCodeVerifRoot.crl0\n2Terms of use at https://www.verisign.com/rpa (c)101.0,\n/http://csc3-2010-crl.verisign.com/CSC3-2010.crl0D\nhttps://www.verisign.com/rpa0\nhttp://ocsp.verisign.com0;\n/http://csc3-2010-aia.verisign.com/CSC3-2010.cer0\n2Terms of use at https://www.verisign.com/rpa (c)101.0,\nhttps://www.verisign.com/cps0*\nhttps://www.verisign.com/rpa0\n#http://logo.verisign.com/vslogo.gif04\n#http://crl.verisign.com/pca3-g5.crl04\nhttp://ocsp.verisign.com0\n2Terms of use at https://www.verisign.com/rpa (c)101.0,",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 0,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {
+          "network": {
+            "static": {
+              "domain": [
+                "ocsp.thawte.com",
+                "crl.thawte.com",
+                "ts-ocsp.ws.symantec.com",
+                "ts-aia.ws.symantec.com",
+                "ts-crl.ws.symantec.com",
+                "crl.microsoft.com",
+                "www.verisign.com",
+                "csc3-2010-crl.verisign.com",
+                "ocsp.verisign.com",
+                "csc3-2010-aia.verisign.com",
+                "logo.verisign.com",
+                "crl.verisign.com"
+              ],
+              "uri": [
+                "http://ocsp.thawte.com0",
+                "http://crl.thawte.com/ThawteTimestampingCA.crl0",
+                "http://ts-ocsp.ws.symantec.com07",
+                "http://ts-aia.ws.symantec.com/tss-ca-g2.cer0",
+                "http://ts-crl.ws.symantec.com/tss-ca-g2.crl0(",
+                "http://crl.microsoft.com/pki/crl/products/MicrosoftCodeVerifRoot.crl0",
+                "https://www.verisign.com/rpa",
+                "http://csc3-2010-crl.verisign.com/CSC3-2010.crl0D",
+                "https://www.verisign.com/rpa0",
+                "http://ocsp.verisign.com0",
+                "http://csc3-2010-aia.verisign.com/CSC3-2010.cer0",
+                "https://www.verisign.com/cps0*",
+                "http://logo.verisign.com/vslogo.gif04",
+                "http://crl.verisign.com/pca3-g5.crl04"
+              ]
+            }
+          }
+        },
+        "title_text": "FLOSS static ASCII strings",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "Most likely decoding functions:\naddress      score\n---------  -------\n0x15B30    0.87467\n0x156F0    0.78333\n0x15A40    0.62333\n0x113E0    0.59133\n0x11AF0    0.57467\n0x127A0    0.516\n0x11734    0.508\n0x15690    0.39067\n0x147E4    0.37467\n0x12984    0.29933\n\nFLOSS decoded 1 strings\n\nDecoding function at 0x156F0 (decoded 1 strings)\nOffset    Called At    String\n--------  -----------  ------------------------------------------------------------------------------------------------\n[STACK]   0x114BB      \\Registry\\Machine\\System\\CurrentControlSet\\Control\\Class\\{4D36E972-E325-11CE-BFC1-08002BE10318}\\\n\nFlare Floss generated error messages while analyzing:\nWARNING:viv_utils:vivisect version mismatch! wanted: N/A, found: None\n",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 0,
+        "heuristic": {
+          "attack_ids": [],
+          "frequency": 1,
+          "heur_id": 1,
+          "score": 500,
+          "score_map": {},
+          "signatures": {
+            "decoded_ioc": 1
+          }
+        },
+        "promote_to": null,
+        "tags": {
+          "dynamic": {
+            "registry_key": [
+              "Registry\\Machine\\System\\CurrentControlSet\\Control\\Class"
+            ]
+          },
+          "file": {
+            "string": {
+              "decoded": [
+                "\\Registry\\Machine\\System\\CurrentControlSet\\Control\\Class\\{4D36E972-E325-11C"
+              ]
+            }
+          }
+        },
+        "title_text": "FLARE FLOSS Decoded Strings",
+        "zeroize_on_tag_safe": false
+      }
+    ]
+  },
+  "files": {
+    "extracted": [],
+    "supplementary": []
+  },
+  "results": {
+    "heuristics": [
+      {
+        "attack_ids": [],
+        "heur_id": 1,
+        "signatures": [
+          "decoded_ioc"
+        ]
+      }
+    ],
+    "tags": {
+      "dynamic.registry_key": [
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "Registry\\Machine\\System\\CurrentControlSet\\Control\\Class"
+        }
+      ],
+      "file.string.decoded": [
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "\\Registry\\Machine\\System\\CurrentControlSet\\Control\\Class\\{4D36E972-E325-11C"
+        }
+      ],
+      "network.static.domain": [
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "crl.microsoft.com"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "crl.thawte.com"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "crl.verisign.com"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "csc3-2010-aia.verisign.com"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "csc3-2010-crl.verisign.com"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "logo.verisign.com"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "ocsp.thawte.com"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "ocsp.verisign.com"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "ts-aia.ws.symantec.com"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "ts-crl.ws.symantec.com"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "ts-ocsp.ws.symantec.com"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "www.verisign.com"
+        }
+      ],
+      "network.static.uri": [
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://crl.microsoft.com/pki/crl/products/MicrosoftCodeVerifRoot.crl0"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://crl.thawte.com/ThawteTimestampingCA.crl0"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://crl.verisign.com/pca3-g5.crl04"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://csc3-2010-aia.verisign.com/CSC3-2010.cer0"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://csc3-2010-crl.verisign.com/CSC3-2010.crl0D"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://logo.verisign.com/vslogo.gif04"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://ocsp.thawte.com0"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://ocsp.verisign.com0"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://ts-aia.ws.symantec.com/tss-ca-g2.cer0"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://ts-crl.ws.symantec.com/tss-ca-g2.crl0("
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://ts-ocsp.ws.symantec.com07"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "https://www.verisign.com/cps0*"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "https://www.verisign.com/rpa"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "https://www.verisign.com/rpa0"
+        }
+      ]
+    },
+    "temp_submission_data": {}
+  }
+}
