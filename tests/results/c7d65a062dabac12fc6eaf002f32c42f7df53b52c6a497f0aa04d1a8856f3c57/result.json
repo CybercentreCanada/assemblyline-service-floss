@@ -1,0 +1,307 @@
+{
+  "extra": {
+    "drop_file": false,
+    "score": 1000,
+    "sections": [
+      {
+        "auto_collapse": false,
+        "body": null,
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 0,
+        "heuristic": {
+          "attack_ids": [],
+          "frequency": 1,
+          "heur_id": 3,
+          "score": 500,
+          "score_map": {},
+          "signatures": {
+            "stacked_ioc": 1
+          }
+        },
+        "promote_to": null,
+        "tags": {},
+        "title_text": "FLARE FLOSS Stacked Strings",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "RRRSRPh",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: 'RRRSRPh' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "D$$[[aYZQ",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: 'D$$[[aYZQ' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "192.168.7.59\nUser-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {
+          "file": {
+            "string": {
+              "blacklisted": [
+                "User-Agent",
+                "Windows NT",
+                "Mozilla/4.0"
+              ]
+            }
+          }
+        },
+        "title_text": "Group: '192.168.7.59' Strings: 2",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "reverse",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {
+          "file": {
+            "string": {
+              "blacklisted": [
+                "reverse"
+              ]
+            }
+          }
+        },
+        "title_text": "Group: 'reverse' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "WWWWWh:Vy",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: 'WWWWWh:Vy' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "hwiniThLw&",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: 'hwiniThLw&' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "ineIGenu",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: 'ineIGenu' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "Most likely decoding functions:\naddress      score\n---------  -------\n0x402410   0.76667\n0x402430   0.76667\n0x402395   0.73333\n0x402465   0.73333\n0x4024A5   0.73333\n0x402104   0.53333\n0x401D51   0.53333\n0x401070   0.53333\n0x40177F   0.28333\n0x401C36   0.26667\n\nFLOSS decoded 7 strings\n\nDecoding function at 0x401070 (decoded 7 strings)\nOffset    Called At    String\n--------  -----------  --------------------------------------------------------------\n[STACK]   0x401947     reverse\n[STACK]   0x401947     D$$[[aYZQ\n[STACK]   0x401947     hwiniThLw&\n[STACK]   0x401947     WWWWWh:Vy\n[STACK]   0x401947     RRRSRPh\n[STACK]   0x401947     User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)\n[STACK]   0x401947     192.168.7.59\n",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 0,
+        "heuristic": {
+          "attack_ids": [],
+          "frequency": 1,
+          "heur_id": 1,
+          "score": 500,
+          "score_map": {},
+          "signatures": {
+            "decoded_ioc": 1
+          }
+        },
+        "promote_to": null,
+        "tags": {
+          "file": {
+            "string": {
+              "blacklisted": [
+                "reverse",
+                "User-Agent",
+                "Windows NT",
+                "Mozilla/4.0"
+              ],
+              "decoded": [
+                "reverse",
+                "D$$[[aYZQ",
+                "hwiniThLw&",
+                "WWWWWh:Vy",
+                "RRRSRPh",
+                "User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)",
+                "192.168.7.59"
+              ]
+            }
+          }
+        },
+        "title_text": "FLARE FLOSS Decoded Strings",
+        "zeroize_on_tag_safe": false
+      }
+    ]
+  },
+  "files": {
+    "extracted": [],
+    "supplementary": []
+  },
+  "results": {
+    "heuristics": [
+      {
+        "attack_ids": [],
+        "heur_id": 1,
+        "signatures": [
+          "decoded_ioc"
+        ]
+      },
+      {
+        "attack_ids": [],
+        "heur_id": 3,
+        "signatures": [
+          "stacked_ioc"
+        ]
+      }
+    ],
+    "tags": {
+      "file.string.blacklisted": [
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "Mozilla/4.0"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "Mozilla/4.0"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "User-Agent"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "User-Agent"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "Windows NT"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "Windows NT"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "reverse"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "reverse"
+        }
+      ],
+      "file.string.decoded": [
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "192.168.7.59"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "D$$[[aYZQ"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "RRRSRPh"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "WWWWWh:Vy"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "hwiniThLw&"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "reverse"
+        }
+      ]
+    },
+    "temp_submission_data": {}
+  }
+}
