@@ -15,6 +15,7 @@ disable_cache: false
 enabled: true
 is_external: false
 licence_count: 0
+privileged:
 
 config:
   max_size: 85000
@@ -43,4 +44,4 @@ heuristics:
 docker_config:
   image: ${REGISTRY}cccs/assemblyline-service-floss:$SERVICE_TAG
   cpu_cores: 2
-  ram_mb: 512
+  ram_mb: 2048
