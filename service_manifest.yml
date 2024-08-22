@@ -24,6 +24,12 @@ config:
   enc_min_length: 7
   stack_min_length: 7
 
+  deep_scan_max_size: 200000
+  deep_scan_max_length: 1000000
+  deep_scan_st_max: 100000
+  deep_scan_enc_min: 7
+  deep_scan_stack_min: 7
+
 heuristics:
   - heur_id: 1
     name: Decoded string
