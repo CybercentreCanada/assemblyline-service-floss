@@ -2,7 +2,6 @@ apt-transport-https
 curl
 libfuzzy-dev
 libfuzzy2
-python-levenshtein
 software-properties-common
 unzip
 wget
