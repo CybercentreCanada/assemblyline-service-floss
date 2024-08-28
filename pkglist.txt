@@ -1,0 +1,7 @@
+apt-transport-https
+curl
+libfuzzy-dev
+libfuzzy2
+software-properties-common
+unzip
+wget
