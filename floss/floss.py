@@ -132,16 +132,16 @@ class Floss(ServiceBase):
         file_path = request.file_path
         if request.deep_scan:
             # Maximum size of submitted file to run this service:
-            max_size = 200000
+            max_size = self.config.get("deep_scan_max_size", 200000)
             # String length maximum, used in basic ASCII and UNICODE modules:
-            max_length = 1000000
+            max_length = self.config.get("deep_scan_max_length", 1000000)
             # String list maximum size
             # List produced by basic ASCII and UNICODE module results and will determine
             # if patterns.py will only evaluate network IOC patterns:
-            st_max_size = 100000
+            st_max_size = self.config.get("deep_scan_st_max", 100000)
             # Minimum string size for encoded/stacked string modules:
-            enc_min_length = 7
-            stack_min_length = 7
+            enc_min_length = self.config.get("deep_scan_enc_min", 7)
+            stack_min_length = self.config.get("deep_scan_stack_min", 7)
         else:
             max_size = self.config.get("max_size", 85000)
             max_length = self.config.get("max_length", 5000)
