@@ -1,12 +1,17 @@
 ARG branch=latest
 FROM cccs/assemblyline-v4-service-base:$branch
 
+# Python path to the service class from your service directory
 ENV SERVICE_PATH floss.floss.Floss
 
+# Install apt dependencies
 USER root
-
-# python-levenshtein gives a faster fuzzywuzzy
-RUN apt-get update && apt-get install -y python3-levenshtein unzip curl && rm -rf /var/lib/apt/lists/*
+COPY pkglist.txt /tmp/setup/
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y --no-install-recommends \
+    $(grep -vE "^\s*(#|$)" /tmp/setup/pkglist.txt | tr "\n" " ") && \
+    rm -rf /tmp/setup/pkglist.txt /var/lib/apt/lists/*
 
 # Get the latest FLOSS binary
 RUN curl -L https://github.com/fireeye/flare-floss/releases/download/v1.7.0/floss-v1.7.0-linux.zip -o floss.zip \
@@ -14,19 +19,21 @@ RUN curl -L https://github.com/fireeye/flare-floss/releases/download/v1.7.0/flos
     && chmod +x /opt/floss \
     && rm floss.zip
 
-# Switch to assemblyline user
-USER assemblyline
-
 # Install python dependencies
+USER assemblyline
 COPY requirements.txt requirements.txt
-RUN pip install --no-cache-dir --user --requirement requirements.txt && rm -rf ~/.cache/pip
+RUN pip install \
+    --no-cache-dir \
+    --user \
+    --requirement requirements.txt && \
+    rm -rf ~/.cache/pip
 
 # Copy service code
 WORKDIR /opt/al_service
 COPY . .
 
 # Patch version in manifest
-ARG version=4.0.0.dev1
+ARG version=1.0.0.dev1
 USER root
 RUN sed -i -e "s/\$SERVICE_TAG/$version/g" service_manifest.yml
 
