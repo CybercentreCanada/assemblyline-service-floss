@@ -150,7 +150,7 @@ class Floss(ServiceBase):
             stack_min_length = self.config.get("stack_min_length", 7)
         timeout = self.service_attributes.timeout - 50
 
-        if len(request.file_contents) > max_size:
+        if request.file_size > max_size:
             return
 
         stack_args = [FLOSS, f"-n {stack_min_length}", "--no-decoded-strings", file_path]
