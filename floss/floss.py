@@ -10,7 +10,7 @@ from assemblyline_service_utilities.common.balbuzard.patterns import PatternMatc
 from assemblyline_v4_service.common.base import ServiceBase
 from assemblyline_v4_service.common.request import ServiceRequest
 from assemblyline_v4_service.common.result import BODY_FORMAT, Heuristic, Result, ResultSection
-from fuzzywuzzy.process import extract
+from rapidfuzz.process import extract
 
 FLOSS = "/opt/floss"
 
@@ -150,7 +150,7 @@ class Floss(ServiceBase):
             stack_min_length = self.config.get("stack_min_length", 7)
         timeout = self.service_attributes.timeout - 50
 
-        if len(request.file_contents) > max_size:
+        if request.file_size > max_size:
             return
 
         stack_args = [FLOSS, f"-n {stack_min_length}", "--no-decoded-strings", file_path]
