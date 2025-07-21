@@ -1,0 +1,8 @@
+apt-transport-https
+curl
+libfuzzy-dev
+libfuzzy2
+python3-levenshtein
+software-properties-common
+unzip
+wget
