@@ -2,3 +2,4 @@ assemblyline
 assemblyline-v4-service
 assemblyline-service-utilities
 python-Levenshtein
+rapidfuzz

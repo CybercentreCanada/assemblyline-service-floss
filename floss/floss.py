@@ -10,7 +10,7 @@ from assemblyline_service_utilities.common.balbuzard.patterns import PatternMatc
 from assemblyline_v4_service.common.base import ServiceBase
 from assemblyline_v4_service.common.request import ServiceRequest
 from assemblyline_v4_service.common.result import BODY_FORMAT, Heuristic, Result, ResultSection
-from fuzzywuzzy.process import extract
+from rapidfuzz.process import extract
 
 FLOSS = "/opt/floss"
 
