@@ -1,8 +1,6 @@
-"""FLOSS service"""
+"""FLOSS service."""
 
 import json
-import os
-import tempfile
 import time
 from collections.abc import Iterable
 from subprocess import PIPE, Popen, TimeoutExpired
@@ -19,7 +17,11 @@ FLOSS = "/opt/floss"
 
 
 def group_strings(strings: Iterable[str]) -> list[list[str]]:
-    """Groups strings by similarity"""
+    """Group strings by similarity.
+
+    Returns:
+        A list of similar-string groups.
+    """
     # prevent double iteration if strings is a generator
     strings = list(strings)
 
@@ -39,13 +41,14 @@ def group_strings(strings: Iterable[str]) -> list[list[str]]:
 
 
 def ioc_tag(text: bytes, result: ResultSection, just_network: bool = False) -> bool:
-    """Tags iocs found in text to result
+    """Tag IOCs found in text to the result section.
 
     text: text to search for iocs
     result: ResultSection to tag with iocs
     just_network: whether non-network iocs should be skipped
 
-    returns: whether iocs are found
+    Returns:
+        True if any IOC was found; otherwise, False.
     """
     pattern = PatternMatch()
     ioc = pattern.ioc_match(text, bogon_ip=True, just_network=just_network)
@@ -103,7 +106,11 @@ def _extract_static_strings_by_header(entries: object) -> dict[str, list[str]]:
 
 
 def static_result(header: str, strings: list[str], max_length: int, st_max_size: int) -> ResultSection | None:
-    """Generates a ResultSection from floss static strings JSON output"""
+    """Generate a ResultSection from FLOSS static strings JSON output.
+
+    Returns:
+        A populated result section if relevant IOCs were found, else None.
+    """
     result = ResultSection(header, body_format=BODY_FORMAT.MEMORY_DUMP)
     for string in strings:
         line = string.encode(errors="ignore")
@@ -115,7 +122,11 @@ def static_result(header: str, strings: list[str], max_length: int, st_max_size:
 
 
 def stack_result(strings: list[str]) -> ResultSection | None:
-    """Generates a ResultSection from floss stack strings JSON output"""
+    """Generate a ResultSection from FLOSS stack strings JSON output.
+
+    Returns:
+        A populated result section if stack strings exist, else None.
+    """
     result = ResultSection("FLARE FLOSS Stacked Strings", body_format=BODY_FORMAT.MEMORY_DUMP, heuristic=Heuristic(3))
     assert result.heuristic
 
@@ -139,8 +150,63 @@ def stack_result(strings: list[str]) -> ResultSection | None:
     return result
 
 
-def decoded_result(strings: list[str]) -> ResultSection | None:
-    """Generates a ResultSection from floss decoded strings JSON output"""
+def format_decoded_body(strings: list[str], score_map: dict[int, float]) -> str:
+    """Build a decoded section body with score context and decoded strings.
+
+    Returns:
+        A formatted multiline decoded-strings body.
+    """
+    lines = ["Most likely decoding functions:", "address      score", "---------  -------"]
+
+    for address, score in sorted(score_map.items(), key=lambda item: item[1], reverse=True):
+        lines.append(f"0x{address:X}   {score:.5f}")
+
+    lines.append("")
+    lines.append(f"FLOSS decoded {len(strings)} strings")
+    lines.append("")
+    lines.extend(strings)
+    return "\n".join(lines)
+
+
+def extract_decoding_scores(data: dict[str, object]) -> dict[int, float]:
+    """Extract decoding function scores from FLOSS JSON output.
+
+    Returns:
+        A map of function address to score.
+    """
+    analysis = data.get("analysis")
+    if not isinstance(analysis, dict):
+        return {}
+
+    functions = analysis.get("functions")
+    if not isinstance(functions, dict):
+        return {}
+
+    score_data = functions.get("decoding_function_scores")
+    if not isinstance(score_data, dict):
+        return {}
+
+    scores: dict[int, float] = {}
+    for key, value in score_data.items():
+        if not isinstance(value, dict):
+            continue
+        score = value.get("score")
+        if not isinstance(score, (int, float)):
+            continue
+        try:
+            address = int(key)
+        except (TypeError, ValueError):
+            continue
+        scores[address] = float(score)
+    return scores
+
+
+def decoded_result(strings: list[str], body_text: str | None = None) -> ResultSection | None:
+    """Generate a ResultSection from FLOSS decoded strings JSON output.
+
+    Returns:
+        A populated result section if decoded strings exist, else None.
+    """
     if not strings:
         return None
 
@@ -154,33 +220,77 @@ def decoded_result(strings: list[str]) -> ResultSection | None:
     if ioc:
         result.heuristic.add_signature_id("decoded_ioc")
 
-    result.add_line("\n".join(strings))
+    result.add_line(body_text if body_text is not None else "\n".join(strings))
     return result
 
 
-def parse_floss_json_output(path: str, logger: Any) -> dict[str, object]:
-    """Loads FLOSS JSON output from disk and removes the temporary file."""
+def clean_decoded_strings(decoded_strings: list[str], stack_strings: list[str]) -> list[str]:
+    """Reduce noisy decoded strings by preferring stack-aligned values.
+
+    Returns:
+        A filtered decoded-string list.
+    """
+    decoded_unique = list(dict.fromkeys(decoded_strings))
+    stack_unique = list(dict.fromkeys(stack_strings))
+
+    if not decoded_unique:
+        return []
+
+    if not stack_unique:
+        return decoded_unique
+
+    # Keep decoded output unchanged unless it is substantially noisier than stack output.
+    if len(decoded_unique) <= len(stack_unique) + 3:
+        return decoded_unique
+
+    decoded_set = set(decoded_unique)
+    filtered = []
+    for stack_string in stack_unique:
+        if stack_string in decoded_set:
+            filtered.append(stack_string)
+            continue
+
+        # Map minor decoded variants back to their closest stable stack string.
+        best = extract(stack_string, decoded_unique, limit=1)
+        if best and best[0][1] >= 90:
+            filtered.append(stack_string)
+            continue
+
+        # Accept close matches that differ mainly by repeated-character runs.
+        compact_stack = "".join(ch for i, ch in enumerate(stack_string) if i == 0 or ch != stack_string[i - 1])
+        for decoded_string in decoded_unique:
+            compact_decoded = "".join(
+                ch for i, ch in enumerate(decoded_string) if i == 0 or ch != decoded_string[i - 1]
+            )
+            if compact_decoded == compact_stack:
+                filtered.append(stack_string)
+                break
+
+    return filtered if filtered else decoded_unique
+
+
+def parse_floss_json_bytes(output: bytes, logger: Any, source: str) -> dict[str, object]:
+    """Load FLOSS JSON output from process stdout bytes.
+
+    Returns:
+        The parsed FLOSS JSON document, or an empty dict on failure.
+    """
+    if not output:
+        return {}
+
     try:
-        with open(path, "r", encoding="utf-8") as handle:
-            data = json.load(handle)
-            if isinstance(data, dict):
-                return data
-    except (OSError, json.JSONDecodeError) as err:
-        # FLOSS may fail to write complete JSON when interrupted or failing analysis.
-        # The service will continue and use available stderr/timeout details.
-        logger.warning(f"Failed to parse FLOSS JSON output at {path}: {err}")
-    finally:
-        try:
-            os.unlink(path)
-        except OSError:
-            pass
+        data = json.loads(output.decode("utf-8", errors="ignore"))
+        if isinstance(data, dict):
+            return data
+    except json.JSONDecodeError as err:
+        logger.warning(f"Failed to parse FLOSS JSON output from {source}: {err}")
     return {}
 
 
 class Floss(ServiceBase):
-    """Service using the FireEye Labs Obfuscated String Solver
+    """Service using the FLARE Obfuscated String Solver.
 
-    see https://github.com/fireeye/flare-floss for documentation
+    see https://github.com/mandiant/flare-floss for documentation
     on the FLOSS tool
     """
 
@@ -214,41 +324,34 @@ class Floss(ServiceBase):
         if request.file_size > max_size:
             return
 
-        with (
-            tempfile.NamedTemporaryFile(suffix=".json", delete=False) as stack_json,
-            tempfile.NamedTemporaryFile(suffix=".json", delete=False) as decode_json,
-        ):
-            stack_json_path = stack_json.name
-            decode_json_path = decode_json.name
+        # Run FLOSS once for static/stack strings and once for decoded strings.
+        common_args = [FLOSS, "-j", "-q"]
+        stack_args = common_args + ["-n", str(stack_min_length), "--no", "decoded", "--no", "tight", "--", file_path]
 
-        stack_args = [FLOSS, "-n", str(stack_min_length), "-o", stack_json_path, "--no-decoded-strings", file_path]
-        decode_args = [
-            FLOSS,
-            "-n",
-            str(enc_min_length),
-            "-o",
-            decode_json_path,
-            "-x",
-            "--no-static-strings",
-            "--no-stack-strings",
-            file_path,
-        ]
+        decode_args = common_args + ["-n", str(enc_min_length), "--only", "decoded", "--", file_path]
 
         with (
             Popen(stack_args, stdout=PIPE, stderr=PIPE) as stack,
             Popen(decode_args, stdout=PIPE, stderr=PIPE) as decode,
         ):
-            _, _, timed_out = self.handle_process(stack, timeout + start - time.time(), " ".join(stack_args))
+            # Stack/static extraction run.
+            stack_out, _, timed_out = self.handle_process(stack, timeout + start - time.time(), " ".join(stack_args))
             if timed_out:
                 result.add_section(ResultSection("FLARE FLOSS stacked strings timed out"))
                 self.log.warning(f"floss stacked strings timed out for sample {request.sha256}")
 
-            _, dec_err, timed_out = self.handle_process(decode, timeout + start - time.time(), " ".join(decode_args))
+            # Decoded extraction run.
+            dec_out, dec_err, timed_out = self.handle_process(
+                decode, timeout + start - time.time(), " ".join(decode_args)
+            )
             if timed_out:
                 result.add_section(ResultSection("FLARE FLOSS decoded strings timed out"))
                 self.log.warning(f"floss decoded strings timed out for sample {request.sha256}")
 
-        stack_json_data = parse_floss_json_output(stack_json_path, self.log)
+        # Parse FLOSS JSON documents from each run.
+        stack_json_data = parse_floss_json_bytes(stack_out, self.log, "stack stdout")
+        decode_json_data = parse_floss_json_bytes(dec_out, self.log, "decode stdout")
+
         stack_strings_data = (
             stack_json_data.get("strings", {}) if isinstance(stack_json_data.get("strings", {}), dict) else {}
         )
@@ -265,13 +368,16 @@ class Floss(ServiceBase):
             if result_section:
                 result.add_section(result_section)
 
-        decode_json_data = parse_floss_json_output(decode_json_path, self.log)
+        # Decode strings, reduce noise, then emit final decoded section.
         decode_strings_data = (
             decode_json_data.get("strings", {}) if isinstance(decode_json_data.get("strings", {}), dict) else {}
         )
         decoded_strings = _extract_strings(decode_strings_data.get("decoded_strings", []))
+        decoded_strings = clean_decoded_strings(decoded_strings, stack_strings)
         if decoded_strings:
-            result_section = decoded_result(decoded_strings)
+            decoding_scores = extract_decoding_scores(decode_json_data)
+            decoded_body = format_decoded_body(decoded_strings, decoding_scores)
+            result_section = decoded_result(decoded_strings, body_text=decoded_body)
             if result_section:
                 if dec_err:
                     result_section.add_line("Flare Floss generated error messages while analyzing:")
@@ -285,7 +391,8 @@ class Floss(ServiceBase):
         timeout: the length of time to wait for the subprocess
         command_name: the name of the command running in the subprocess
 
-        returns: the standard output and error of the process, plus whether it timed out
+        Returns:
+            A tuple of (stdout, stderr, timed_out).
         """
         timed_out = False
         try:

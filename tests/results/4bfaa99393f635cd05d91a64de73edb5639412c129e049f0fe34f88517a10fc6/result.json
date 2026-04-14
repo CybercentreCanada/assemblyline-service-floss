@@ -53,7 +53,7 @@
       },
       {
         "auto_collapse": false,
-        "body": "Most likely decoding functions:\naddress      score\n---------  -------\n0x15B30    0.87467\n0x156F0    0.78333\n0x15A40    0.62333\n0x113E0    0.59133\n0x11AF0    0.57467\n0x127A0    0.516\n0x11734    0.508\n0x15690    0.39067\n0x147E4    0.37467\n0x12984    0.29933\n\nFLOSS decoded 1 strings\n\nDecoding function at 0x156F0 (decoded 1 strings)\nOffset    Called At    String\n--------  -----------  ------------------------------------------------------------------------------------------------\n[STACK]   0x114BB      \\Registry\\Machine\\System\\CurrentControlSet\\Control\\Class\\{4D36E972-E325-11CE-BFC1-08002BE10318}\\\n\nFlare Floss generated error messages while analyzing:\nWARNING:viv_utils:vivisect version mismatch! wanted: N/A, found: None\n",
+        "body": "Most likely decoding functions:\naddress      score\n---------  -------\n0x156F0   0.98600\n0x1502C   0.95400\n0x11AF0   0.88900\n0x14C10   0.87900\n0x147E4   0.86300\n0x19023   0.86200\n0x19008   0.86000\n0x13350   0.83500\n0x12C5C   0.82500\n0x12884   0.81500\n0x11008   0.78800\n0x13A38   0.78800\n0x1187C   0.75300\n0x14554   0.74200\n0x113E0   0.71400\n0x12B18   0.70200\n0x132DC   0.68900\n0x11A60   0.68600\n0x1319C   0.68600\n0x12984   0.67000\n0x127A0   0.56900\n\nFLOSS decoded 1 strings\n\n\\Registry\\Machine\\System\\CurrentControlSet\\Control\\Class\\{4D36E972-E325-11CE-BFC1-08002BE10318}\\",
         "body_config": {},
         "body_format": "MEMORY_DUMP",
         "classification": "TLP:C",
