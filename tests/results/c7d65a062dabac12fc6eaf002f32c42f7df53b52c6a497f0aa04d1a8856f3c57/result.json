@@ -98,9 +98,9 @@
           "file": {
             "string": {
               "blacklisted": [
-                "Windows NT",
                 "Mozilla/4.0",
-                "User-Agent"
+                "User-Agent",
+                "Windows NT"
               ]
             }
           }
@@ -157,9 +157,9 @@
             "string": {
               "blacklisted": [
                 "reverse",
-                "Windows NT",
                 "Mozilla/4.0",
-                "User-Agent"
+                "User-Agent",
+                "Windows NT"
               ],
               "decoded": [
                 "reverse",
