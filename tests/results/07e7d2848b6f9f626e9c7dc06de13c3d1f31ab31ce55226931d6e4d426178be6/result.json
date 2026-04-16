@@ -1,16 +1,151 @@
 {
   "extra": {
     "drop_file": false,
-    "score": 0,
-    "sections": []
+    "score": 10,
+    "sections": [
+      {
+        "auto_collapse": false,
+        "body": "http://ocsp.thawte.com0\n.http://crl.thawte.com/ThawteTimestampingCA.crl0\nhttp://ts-ocsp.ws.symantec.com07\n+http://ts-aia.ws.symantec.com/tss-ca-g2.cer0<\n+http://ts-crl.ws.symantec.com/tss-ca-g2.crl0(",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 0,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {
+          "network": {
+            "static": {
+              "domain": [
+                "ocsp.thawte.com",
+                "crl.thawte.com",
+                "ts-ocsp.ws.symantec.com",
+                "ts-aia.ws.symantec.com",
+                "ts-crl.ws.symantec.com"
+              ],
+              "uri": [
+                "http://ocsp.thawte.com0",
+                "http://crl.thawte.com/ThawteTimestampingCA.crl0",
+                "http://ts-ocsp.ws.symantec.com07",
+                "http://ts-aia.ws.symantec.com/tss-ca-g2.cer0",
+                "http://ts-crl.ws.symantec.com/tss-ca-g2.crl0("
+              ]
+            }
+          }
+        },
+        "title_text": "FLOSS static ASCII strings",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "Most likely decoding functions:\naddress      score\n---------  -------\n0x40152C   0.95600\n0x401863   0.78700\n0x401570   0.76000\n0x40174C   0.76000\n0x401550   0.72900\n0x40120A   0.66000\n0x401235   0.66000\n0x401482   0.66000\n0x4014D7   0.66000\n0x401617   0.66000\n0x40164C   0.66000\n0x4017A5   0.66000\n0x4010B0   0.56000\n0x40132E   0.54000\n0x401000   0.46000\n0x4010DD   0.46000\n0x4016F5   0.46000\n0x40180D   0.46000\n0x401980   0.40000\n0x401B35   0.20000\n\nFLOSS decoded 2 strings\n\nInvalid \n!This program cannot be run in DOS mode.",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 0,
+        "heuristic": {
+          "attack_ids": [],
+          "frequency": 1,
+          "heur_id": 1,
+          "score": 10,
+          "score_map": {},
+          "signatures": {}
+        },
+        "promote_to": null,
+        "tags": {
+          "file": {
+            "string": {
+              "decoded": [
+                "Invalid ",
+                "!This program cannot be run in DOS mode."
+              ]
+            }
+          }
+        },
+        "title_text": "FLARE FLOSS Decoded Strings",
+        "zeroize_on_tag_safe": false
+      }
+    ]
   },
   "files": {
     "extracted": [],
     "supplementary": []
   },
   "results": {
-    "heuristics": [],
-    "tags": {},
+    "heuristics": [
+      {
+        "attack_ids": [],
+        "heur_id": 1,
+        "signatures": []
+      }
+    ],
+    "tags": {
+      "file.string.decoded": [
+        {
+          "heur_id": 1,
+          "signatures": [],
+          "value": "!This program cannot be run in DOS mode."
+        },
+        {
+          "heur_id": 1,
+          "signatures": [],
+          "value": "Invalid "
+        }
+      ],
+      "network.static.domain": [
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "crl.thawte.com"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "ocsp.thawte.com"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "ts-aia.ws.symantec.com"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "ts-crl.ws.symantec.com"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "ts-ocsp.ws.symantec.com"
+        }
+      ],
+      "network.static.uri": [
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://crl.thawte.com/ThawteTimestampingCA.crl0"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://ocsp.thawte.com0"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://ts-aia.ws.symantec.com/tss-ca-g2.cer0"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://ts-crl.ws.symantec.com/tss-ca-g2.crl0("
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://ts-ocsp.ws.symantec.com07"
+        }
+      ]
+    },
     "temp_submission_data": {}
   }
 }
