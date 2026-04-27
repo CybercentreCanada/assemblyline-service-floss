@@ -6,7 +6,7 @@ from subprocess import PIPE, Popen, TimeoutExpired
 from typing import Iterable, List, Optional, Tuple
 
 from assemblyline.common.str_utils import safe_str
-from assemblyline_service_utilities.common.balbuzard.patterns import PatternMatch
+from assemblyline_service_utilities.common.extractor.iocs import find_ioc_tags
 from assemblyline_v4_service.common.base import ServiceBase
 from assemblyline_v4_service.common.request import ServiceRequest
 from assemblyline_v4_service.common.result import BODY_FORMAT, Heuristic, Result, ResultSection
@@ -44,8 +44,7 @@ def ioc_tag(text: bytes, result: ResultSection, just_network: bool = False) -> b
 
     returns: whether iocs are found
     """
-    pattern = PatternMatch()
-    ioc = pattern.ioc_match(text, bogon_ip=True, just_network=just_network)
+    ioc = find_ioc_tags(text, network_only=just_network)
     for kind, values in ioc.items():
         for val in values:
             result.add_tag(kind, val)
