@@ -27,6 +27,5 @@ extends:
     samples_repo: unittest-samples
     test_container: 'false'
     python_versions:
-    - '3.9'
     - '3.11'
     - '3.12'
