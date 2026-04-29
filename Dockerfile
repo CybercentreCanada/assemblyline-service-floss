@@ -2,7 +2,7 @@ ARG branch=latest
 FROM cccs/assemblyline-v4-service-base:$branch
 
 # Python path to the service class from your service directory
-ENV SERVICE_PATH floss.floss.Floss
+ENV SERVICE_PATH=floss.floss.Floss
 
 # Install apt dependencies
 USER root
