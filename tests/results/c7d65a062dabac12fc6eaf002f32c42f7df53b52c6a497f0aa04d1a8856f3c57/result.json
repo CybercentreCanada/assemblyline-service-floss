@@ -5,6 +5,27 @@
     "sections": [
       {
         "auto_collapse": false,
+        "body": "192.168.7.59",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 0,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {
+          "network": {
+            "static": {
+              "ip": [
+                "192.168.7.59"
+              ]
+            }
+          }
+        },
+        "title_text": "FLOSS static ASCII strings",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
         "body": null,
         "body_config": {},
         "body_format": "MEMORY_DUMP",
@@ -53,7 +74,28 @@
       },
       {
         "auto_collapse": false,
-        "body": "192.168.7.59\nUser-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)",
+        "body": "192.168.7.59",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {
+          "network": {
+            "static": {
+              "ip": [
+                "192.168.7.59"
+              ]
+            }
+          }
+        },
+        "title_text": "Group: '192.168.7.59' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)",
         "body_config": {},
         "body_format": "MEMORY_DUMP",
         "classification": "TLP:C",
@@ -64,14 +106,14 @@
           "file": {
             "string": {
               "blacklisted": [
-                "User-Agent",
-                "Windows NT",
-                "Mozilla/4.0"
+                "Mozilla/4.0",
+                "User-Agent:",
+                "Windows NT"
               ]
             }
           }
         },
-        "title_text": "Group: '192.168.7.59' Strings: 2",
+        "title_text": "Group: 'User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)' Strings: 1",
         "zeroize_on_tag_safe": false
       },
       {
@@ -83,15 +125,7 @@
         "depth": 1,
         "heuristic": null,
         "promote_to": null,
-        "tags": {
-          "file": {
-            "string": {
-              "blacklisted": [
-                "reverse"
-              ]
-            }
-          }
-        },
+        "tags": {},
         "title_text": "Group: 'reverse' Strings: 1",
         "zeroize_on_tag_safe": false
       },
@@ -136,7 +170,7 @@
       },
       {
         "auto_collapse": false,
-        "body": "Most likely decoding functions:\naddress      score\n---------  -------\n0x402410   0.76667\n0x402430   0.76667\n0x402395   0.73333\n0x402465   0.73333\n0x4024A5   0.73333\n0x402104   0.53333\n0x401D51   0.53333\n0x401070   0.53333\n0x40177F   0.28333\n0x401C36   0.26667\n\nFLOSS decoded 7 strings\n\nDecoding function at 0x401070 (decoded 7 strings)\nOffset    Called At    String\n--------  -----------  --------------------------------------------------------------\n[STACK]   0x401947     reverse\n[STACK]   0x401947     D$$[[aYZQ\n[STACK]   0x401947     hwiniThLw&\n[STACK]   0x401947     WWWWWh:Vy\n[STACK]   0x401947     RRRSRPh\n[STACK]   0x401947     User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)\n[STACK]   0x401947     192.168.7.59\n",
+        "body": "Most likely decoding functions:\naddress      score\n---------  -------\n0x402410   0.76667\n0x402430   0.76667\n0x402395   0.73333\n0x402465   0.73333\n0x4024A5   0.73333\n0x402104   0.53333\n0x401D51   0.53333\n0x401070   0.53333\n0x40177F   0.28333\n0x401C36   0.26667\n\nFLOSS decoded 7 strings\n\nDecoding function at 0x401070 (decoded 7 strings)\nOffset    Called At    String\n--------  -----------  --------------------------------------------------------------\n[STACK]   0x401947     reverse\n[STACK]   0x401947     D$$[[aYZQ\n[STACK]   0x401947     hwiniThLw&\n[STACK]   0x401947     WWWWWh:Vy\n[STACK]   0x401947     RRRSRPh\n[STACK]   0x401947     User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)\n[STACK]   0x401947     192.168.7.59\n\nFlare Floss generated error messages while analyzing:\nWARNING:viv_utils:vivisect version mismatch! wanted: N/A, found: None\n",
         "body_config": {},
         "body_format": "MEMORY_DUMP",
         "classification": "TLP:C",
@@ -156,10 +190,9 @@
           "file": {
             "string": {
               "blacklisted": [
-                "reverse",
-                "User-Agent",
-                "Windows NT",
-                "Mozilla/4.0"
+                "Mozilla/4.0",
+                "User-Agent:",
+                "Windows NT"
               ],
               "decoded": [
                 "reverse",
@@ -168,6 +201,13 @@
                 "WWWWWh:Vy",
                 "RRRSRPh",
                 "User-Agent: Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)",
+                "192.168.7.59"
+              ]
+            }
+          },
+          "network": {
+            "static": {
+              "ip": [
                 "192.168.7.59"
               ]
             }
@@ -216,14 +256,14 @@
         {
           "heur_id": null,
           "signatures": [],
-          "value": "User-Agent"
+          "value": "User-Agent:"
         },
         {
           "heur_id": 1,
           "signatures": [
             "decoded_ioc"
           ],
-          "value": "User-Agent"
+          "value": "User-Agent:"
         },
         {
           "heur_id": null,
@@ -236,18 +276,6 @@
             "decoded_ioc"
           ],
           "value": "Windows NT"
-        },
-        {
-          "heur_id": null,
-          "signatures": [],
-          "value": "reverse"
-        },
-        {
-          "heur_id": 1,
-          "signatures": [
-            "decoded_ioc"
-          ],
-          "value": "reverse"
         }
       ],
       "file.string.decoded": [
@@ -299,6 +327,25 @@
             "decoded_ioc"
           ],
           "value": "reverse"
+        }
+      ],
+      "network.static.ip": [
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "192.168.7.59"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "192.168.7.59"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "192.168.7.59"
         }
       ]
     },
