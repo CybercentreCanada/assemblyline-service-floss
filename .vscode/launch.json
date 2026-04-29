@@ -5,8 +5,8 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "RunServiceOnce",
-            "type": "python",
+            "name": "RunServiceOnce Floss",
+            "type": "debugpy",
             "request": "launch",
             "module": "assemblyline_v4_service.dev.run_service_once",
             "cwd": "${workspaceFolder}",
@@ -15,6 +15,29 @@
                 "floss.floss.Floss",
                 "${file}"
             ],
+            "justMyCode": false,
+        },
+        {
+            "name": "[Service] Floss - Privileged",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "assemblyline_v4_service.run_privileged_service",
+            "env": {
+                "SERVICE_MANIFEST_PATH": "service_manifest.yml",
+                "PRIVILEGED": "true",
+                "SERVICE_PATH": "floss.floss.Floss",
+                "TASKING_DIR": "/tmp/Floss"
+            },
+            "console": "internalConsole",
+            "cwd": "${workspaceFolder}",
+            "justMyCode": false,
+        },
+        {
+            "name": "Generate Sample Tests",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "tests.gentests",
+            "cwd": "${workspaceFolder}",
             "justMyCode": false,
         },
     ]
