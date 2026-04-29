@@ -1,6 +1,6 @@
 {
   "template": "https://github.com/CybercentreCanada/assemblyline-service-template.git",
-  "commit": "6a32666117e30dbfb990bfaf6e7c9eb25badd03a",
+  "commit": "fb7207484332b978cc409dfc9b9c672335a8cc71",
   "checkout": null,
   "context": {
     "cookiecutter": {
@@ -8,7 +8,7 @@
       "__svc_name": "floss",
       "__repository": "assemblyline-service-floss",
       "__pkg_name": "floss",
-      "__class_name": "Floss",
+      "class_name": "Floss",
       "short_description": "This service uses FireEye Labs Obfuscated String Solver (FLOSS) to find obfuscated strings such as stacked strings.",
       "short_description_fr": "Ce service utilise le logiciel FireEye Labs Obfuscated String Solver (FLOSS) pour trouver les chaînes obscurcies telles que les chaînes empilées.",
       "stage": "CORE",
@@ -16,7 +16,12 @@
       "org_name_full": "CybercentreCanada",
       "org_name_short": "cccs",
       "license": "mit",
-      "_template": "https://github.com/CybercentreCanada/assemblyline-service-template.git"
+      "_extensions": [
+        "local_extensions.github_maintainer.Ext"
+      ],
+      "_template": "https://github.com/CybercentreCanada/assemblyline-service-template.git",
+      "_commit": "fb7207484332b978cc409dfc9b9c672335a8cc71",
+      "_github_maintainer": "cccs-jh"
     }
   },
   "directory": null
