@@ -30,16 +30,16 @@
                 "crl.verisign.com"
               ],
               "uri": [
-                "http://ocsp.thawte.com0",
+                "http://ocsp.thawte.com",
                 "http://crl.thawte.com/ThawteTimestampingCA.crl0",
-                "http://ts-ocsp.ws.symantec.com07",
+                "http://ts-ocsp.ws.symantec.com",
                 "http://ts-aia.ws.symantec.com/tss-ca-g2.cer0",
                 "http://ts-crl.ws.symantec.com/tss-ca-g2.crl0(",
                 "http://crl.microsoft.com/pki/crl/products/MicrosoftCodeVerifRoot.crl0",
                 "https://www.verisign.com/rpa",
                 "http://csc3-2010-crl.verisign.com/CSC3-2010.crl0D",
                 "https://www.verisign.com/rpa0",
-                "http://ocsp.verisign.com0",
+                "http://ocsp.verisign.com",
                 "http://csc3-2010-aia.verisign.com/CSC3-2010.cer0",
                 "https://www.verisign.com/cps0*",
                 "http://logo.verisign.com/vslogo.gif04",
@@ -70,13 +70,11 @@
         },
         "promote_to": null,
         "tags": {
-          "dynamic": {
-            "registry_key": [
-              "Registry\\Machine\\System\\CurrentControlSet\\Control\\Class"
-            ]
-          },
           "file": {
             "string": {
+              "blacklisted": [
+                "Registry\\Machine\\System\\CurrentControlSet\\Control\\Class"
+              ],
               "decoded": [
                 "\\Registry\\Machine\\System\\CurrentControlSet\\Control\\Class\\{4D36E972-E325-11C"
               ]
@@ -103,7 +101,7 @@
       }
     ],
     "tags": {
-      "dynamic.registry_key": [
+      "file.string.blacklisted": [
         {
           "heur_id": 1,
           "signatures": [
@@ -217,12 +215,12 @@
         {
           "heur_id": null,
           "signatures": [],
-          "value": "http://ocsp.thawte.com0"
+          "value": "http://ocsp.thawte.com"
         },
         {
           "heur_id": null,
           "signatures": [],
-          "value": "http://ocsp.verisign.com0"
+          "value": "http://ocsp.verisign.com"
         },
         {
           "heur_id": null,
@@ -237,7 +235,7 @@
         {
           "heur_id": null,
           "signatures": [],
-          "value": "http://ts-ocsp.ws.symantec.com07"
+          "value": "http://ts-ocsp.ws.symantec.com"
         },
         {
           "heur_id": null,
