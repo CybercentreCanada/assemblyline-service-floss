@@ -1,7 +1,7 @@
 {
   "extra": {
     "drop_file": false,
-    "score": 10,
+    "score": 500,
     "sections": [
       {
         "auto_collapse": false,
@@ -30,13 +30,16 @@
                 "crl.verisign.com"
               ],
               "uri": [
+                "http://ocsp.thawte.com",
                 "http://crl.thawte.com/ThawteTimestampingCA.crl0",
+                "http://ts-ocsp.ws.symantec.com",
                 "http://ts-aia.ws.symantec.com/tss-ca-g2.cer0",
                 "http://ts-crl.ws.symantec.com/tss-ca-g2.crl0(",
                 "http://crl.microsoft.com/pki/crl/products/MicrosoftCodeVerifRoot.crl0",
                 "https://www.verisign.com/rpa",
                 "http://csc3-2010-crl.verisign.com/CSC3-2010.crl0D",
                 "https://www.verisign.com/rpa0",
+                "http://ocsp.verisign.com",
                 "http://csc3-2010-aia.verisign.com/CSC3-2010.cer0",
                 "https://www.verisign.com/cps0*",
                 "http://logo.verisign.com/vslogo.gif04",
@@ -59,14 +62,19 @@
           "attack_ids": [],
           "frequency": 1,
           "heur_id": 1,
-          "score": 10,
+          "score": 500,
           "score_map": {},
-          "signatures": {}
+          "signatures": {
+            "decoded_ioc": 1
+          }
         },
         "promote_to": null,
         "tags": {
           "file": {
             "string": {
+              "blacklisted": [
+                "Registry\\Machine\\System\\CurrentControlSet\\Control\\Class"
+              ],
               "decoded": [
                 "\\Registry\\Machine\\System\\CurrentControlSet\\Control\\Class\\{4D36E972-E325-11C"
               ]
@@ -87,14 +95,27 @@
       {
         "attack_ids": [],
         "heur_id": 1,
-        "signatures": []
+        "signatures": [
+          "decoded_ioc"
+        ]
       }
     ],
     "tags": {
+      "file.string.blacklisted": [
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "Registry\\Machine\\System\\CurrentControlSet\\Control\\Class"
+        }
+      ],
       "file.string.decoded": [
         {
           "heur_id": 1,
-          "signatures": [],
+          "signatures": [
+            "decoded_ioc"
+          ],
           "value": "\\Registry\\Machine\\System\\CurrentControlSet\\Control\\Class\\{4D36E972-E325-11C"
         }
       ],
@@ -194,12 +215,27 @@
         {
           "heur_id": null,
           "signatures": [],
+          "value": "http://ocsp.thawte.com"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://ocsp.verisign.com"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
           "value": "http://ts-aia.ws.symantec.com/tss-ca-g2.cer0"
         },
         {
           "heur_id": null,
           "signatures": [],
           "value": "http://ts-crl.ws.symantec.com/tss-ca-g2.crl0("
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://ts-ocsp.ws.symantec.com"
         },
         {
           "heur_id": null,
