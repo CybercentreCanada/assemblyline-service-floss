@@ -5,7 +5,7 @@
     "sections": [
       {
         "auto_collapse": false,
-        "body": "www.digicert.com1.0,\n*http://crl3.digicert.com/assured-cs-g1.crl00\n*http://crl4.digicert.com/assured-cs-g1.crl0L\nhttps://www.digicert.com/CPS0\nhttp://ocsp.digicert.com0L\n@http://cacerts.digicert.com/DigiCertAssuredIDCodeSigningCA-1.crt0\nwww.digicert.com1!0\nhttps://www.digicert.com/CPS0\n2http://crl3.digicert.com/DigiCertAssuredIDCA-1.crl08\n2http://crl4.digicert.com/DigiCertAssuredIDCA-1.crl0w\nhttp://ocsp.digicert.com0A\n5http://cacerts.digicert.com/DigiCertAssuredIDCA-1.crt0\nwww.digicert.com1$0\"\nwww.digicert.com1.0,\n.http://www.digicert.com/ssl-cps-repository.htm0\nhttp://ocsp.digicert.com0C\n7http://cacerts.digicert.com/DigiCertAssuredIDRootCA.crt0\n4http://crl3.digicert.com/DigiCertAssuredIDRootCA.crl0:\n4http://crl4.digicert.com/DigiCertAssuredIDRootCA.crl0\nwww.digicert.com1$0\"\nwww.digicert.com1!0\n.http://www.digicert.com/ssl-cps-repository.htm0\nhttp://ocsp.digicert.com0C\n7http://cacerts.digicert.com/DigiCertAssuredIDRootCA.crt0\n4http://crl3.digicert.com/DigiCertAssuredIDRootCA.crl0:\n4http://crl4.digicert.com/DigiCertAssuredIDRootCA.crl0\nwww.digicert.com1.0,\nwww.digicert.com1!0\nwww.digicert.com110/\n/http://crl3.digicert.com/sha2-assured-cs-g1.crl05\n/http://crl4.digicert.com/sha2-assured-cs-g1.crl0L\nhttps://www.digicert.com/CPS0\nhttp://ocsp.digicert.com0N\nBhttp://cacerts.digicert.com/DigiCertSHA2AssuredIDCodeSigningCA.crt0\nwww.digicert.com1$0\"\nwww.digicert.com110/\nhttp://ocsp.digicert.com0C\n7http://cacerts.digicert.com/DigiCertAssuredIDRootCA.crt0\n4http://crl4.digicert.com/DigiCertAssuredIDRootCA.crl0:\n4http://crl3.digicert.com/DigiCertAssuredIDRootCA.crl0O\nhttps://www.digicert.com/CPS0\nwww.digicert.com110/\nwww.digicert.com110/\nhttps://www.digicert.com/CPS0\n,http://crl3.digicert.com/sha2-assured-ts.crl02\n,http://crl4.digicert.com/sha2-assured-ts.crl0\nhttp://ocsp.digicert.com0O\nChttp://cacerts.digicert.com/DigiCertSHA2AssuredIDTimestampingCA.crt0\nwww.digicert.com1$0\"\nwww.digicert.com110/\nhttp://ocsp.digicert.com0C\n7http://cacerts.digicert.com/DigiCertAssuredIDRootCA.crt0\n4http://crl4.digicert.com/DigiCertAssuredIDRootCA.crl0:\n4http://crl3.digicert.com/DigiCertAssuredIDRootCA.crl0P\nhttps://www.digicert.com/CPS0\nwww.digicert.com110/",
+        "body": "*http://crl3.digicert.com/assured-cs-g1.crl00\n*http://crl4.digicert.com/assured-cs-g1.crl0L\nhttps://www.digicert.com/CPS0\nhttp://ocsp.digicert.com0L\n@http://cacerts.digicert.com/DigiCertAssuredIDCodeSigningCA-1.crt0\nhttps://www.digicert.com/CPS0\n2http://crl3.digicert.com/DigiCertAssuredIDCA-1.crl08\n2http://crl4.digicert.com/DigiCertAssuredIDCA-1.crl0w\nhttp://ocsp.digicert.com0A\n5http://cacerts.digicert.com/DigiCertAssuredIDCA-1.crt0\n.http://www.digicert.com/ssl-cps-repository.htm0\nhttp://ocsp.digicert.com0C\n7http://cacerts.digicert.com/DigiCertAssuredIDRootCA.crt0\n4http://crl3.digicert.com/DigiCertAssuredIDRootCA.crl0:\n4http://crl4.digicert.com/DigiCertAssuredIDRootCA.crl0\n.http://www.digicert.com/ssl-cps-repository.htm0\nhttp://ocsp.digicert.com0C\n7http://cacerts.digicert.com/DigiCertAssuredIDRootCA.crt0\n4http://crl3.digicert.com/DigiCertAssuredIDRootCA.crl0:\n4http://crl4.digicert.com/DigiCertAssuredIDRootCA.crl0\n/http://crl3.digicert.com/sha2-assured-cs-g1.crl05\n/http://crl4.digicert.com/sha2-assured-cs-g1.crl0L\nhttps://www.digicert.com/CPS0\nhttp://ocsp.digicert.com0N\nBhttp://cacerts.digicert.com/DigiCertSHA2AssuredIDCodeSigningCA.crt0\nhttp://ocsp.digicert.com0C\n7http://cacerts.digicert.com/DigiCertAssuredIDRootCA.crt0\n4http://crl4.digicert.com/DigiCertAssuredIDRootCA.crl0:\n4http://crl3.digicert.com/DigiCertAssuredIDRootCA.crl0O\nhttps://www.digicert.com/CPS0\nhttps://www.digicert.com/CPS0\n,http://crl3.digicert.com/sha2-assured-ts.crl02\n,http://crl4.digicert.com/sha2-assured-ts.crl0\nhttp://ocsp.digicert.com0O\nChttp://cacerts.digicert.com/DigiCertSHA2AssuredIDTimestampingCA.crt0\nhttp://ocsp.digicert.com0C\n7http://cacerts.digicert.com/DigiCertAssuredIDRootCA.crt0\n4http://crl4.digicert.com/DigiCertAssuredIDRootCA.crl0:\n4http://crl3.digicert.com/DigiCertAssuredIDRootCA.crl0P\nhttps://www.digicert.com/CPS0",
         "body_config": {},
         "body_format": "MEMORY_DUMP",
         "classification": "TLP:C",
@@ -16,9 +16,9 @@
           "network": {
             "static": {
               "domain": [
-                "www.digicert.com",
                 "crl3.digicert.com",
                 "crl4.digicert.com",
+                "www.digicert.com",
                 "ocsp.digicert.com",
                 "cacerts.digicert.com"
               ],
@@ -26,26 +26,21 @@
                 "http://crl3.digicert.com/assured-cs-g1.crl00",
                 "http://crl4.digicert.com/assured-cs-g1.crl0L",
                 "https://www.digicert.com/CPS0",
-                "http://ocsp.digicert.com0L",
                 "http://cacerts.digicert.com/DigiCertAssuredIDCodeSigningCA-1.crt0",
                 "http://crl3.digicert.com/DigiCertAssuredIDCA-1.crl08",
                 "http://crl4.digicert.com/DigiCertAssuredIDCA-1.crl0w",
-                "http://ocsp.digicert.com0A",
                 "http://cacerts.digicert.com/DigiCertAssuredIDCA-1.crt0",
                 "http://www.digicert.com/ssl-cps-repository.htm0",
-                "http://ocsp.digicert.com0C",
                 "http://cacerts.digicert.com/DigiCertAssuredIDRootCA.crt0",
                 "http://crl3.digicert.com/DigiCertAssuredIDRootCA.crl0:",
                 "http://crl4.digicert.com/DigiCertAssuredIDRootCA.crl0",
                 "http://crl3.digicert.com/sha2-assured-cs-g1.crl05",
                 "http://crl4.digicert.com/sha2-assured-cs-g1.crl0L",
-                "http://ocsp.digicert.com0N",
                 "http://cacerts.digicert.com/DigiCertSHA2AssuredIDCodeSigningCA.crt0",
                 "http://crl4.digicert.com/DigiCertAssuredIDRootCA.crl0:",
                 "http://crl3.digicert.com/DigiCertAssuredIDRootCA.crl0O",
                 "http://crl3.digicert.com/sha2-assured-ts.crl02",
                 "http://crl4.digicert.com/sha2-assured-ts.crl0",
-                "http://ocsp.digicert.com0O",
                 "http://cacerts.digicert.com/DigiCertSHA2AssuredIDTimestampingCA.crt0",
                 "http://crl3.digicert.com/DigiCertAssuredIDRootCA.crl0P"
               ]
@@ -743,41 +738,21 @@
             },
             "string": {
               "api": [
-                "CoInitialize",
-                "CoInitializeSecurity",
-                "CoCreateInstance",
-                "HttpQueryInfo",
-                "CryptImportKey",
-                "CryptVerifySignature",
-                "ReadFile",
-                "OpenSemaphore",
-                "CreateSemaphore",
                 "NtSuspendProcess",
-                "OpenThread",
                 "NtCreateUserProcess",
-                "ResumeThread",
                 "NtResumeThread",
                 "NtCreateSection",
-                "CreateEvent",
                 "NtOpenEvent",
-                "OpenEvent",
                 "NtOpenSection",
                 "NtTerminateProcess",
-                "TerminateProcess",
                 "NtMapViewOfSection",
                 "NtQueryInformationProcess",
                 "NtOpenKey",
                 "NtOpenFile",
-                "OpenFile",
                 "NtCreateProcess",
-                "CreateProcess",
                 "NtUnmapViewOfSection",
                 "NtProtectVirtualMemory",
                 "NtWriteVirtualMemory"
-              ],
-              "blacklisted": [
-                "Algorithm",
-                "Protect"
               ],
               "decoded": [
                 "CoInitialize",
@@ -895,69 +870,6 @@
           "signatures": [
             "decoded_ioc"
           ],
-          "value": "CoCreateInstance"
-        },
-        {
-          "heur_id": 1,
-          "signatures": [
-            "decoded_ioc"
-          ],
-          "value": "CoInitialize"
-        },
-        {
-          "heur_id": 1,
-          "signatures": [
-            "decoded_ioc"
-          ],
-          "value": "CoInitializeSecurity"
-        },
-        {
-          "heur_id": 1,
-          "signatures": [
-            "decoded_ioc"
-          ],
-          "value": "CreateEvent"
-        },
-        {
-          "heur_id": 1,
-          "signatures": [
-            "decoded_ioc"
-          ],
-          "value": "CreateProcess"
-        },
-        {
-          "heur_id": 1,
-          "signatures": [
-            "decoded_ioc"
-          ],
-          "value": "CreateSemaphore"
-        },
-        {
-          "heur_id": 1,
-          "signatures": [
-            "decoded_ioc"
-          ],
-          "value": "CryptImportKey"
-        },
-        {
-          "heur_id": 1,
-          "signatures": [
-            "decoded_ioc"
-          ],
-          "value": "CryptVerifySignature"
-        },
-        {
-          "heur_id": 1,
-          "signatures": [
-            "decoded_ioc"
-          ],
-          "value": "HttpQueryInfo"
-        },
-        {
-          "heur_id": 1,
-          "signatures": [
-            "decoded_ioc"
-          ],
           "value": "NtCreateProcess"
         },
         {
@@ -1057,71 +969,6 @@
             "decoded_ioc"
           ],
           "value": "NtWriteVirtualMemory"
-        },
-        {
-          "heur_id": 1,
-          "signatures": [
-            "decoded_ioc"
-          ],
-          "value": "OpenEvent"
-        },
-        {
-          "heur_id": 1,
-          "signatures": [
-            "decoded_ioc"
-          ],
-          "value": "OpenFile"
-        },
-        {
-          "heur_id": 1,
-          "signatures": [
-            "decoded_ioc"
-          ],
-          "value": "OpenSemaphore"
-        },
-        {
-          "heur_id": 1,
-          "signatures": [
-            "decoded_ioc"
-          ],
-          "value": "OpenThread"
-        },
-        {
-          "heur_id": 1,
-          "signatures": [
-            "decoded_ioc"
-          ],
-          "value": "ReadFile"
-        },
-        {
-          "heur_id": 1,
-          "signatures": [
-            "decoded_ioc"
-          ],
-          "value": "ResumeThread"
-        },
-        {
-          "heur_id": 1,
-          "signatures": [
-            "decoded_ioc"
-          ],
-          "value": "TerminateProcess"
-        }
-      ],
-      "file.string.blacklisted": [
-        {
-          "heur_id": 1,
-          "signatures": [
-            "decoded_ioc"
-          ],
-          "value": "Algorithm"
-        },
-        {
-          "heur_id": 1,
-          "signatures": [
-            "decoded_ioc"
-          ],
-          "value": "Protect"
         }
       ],
       "file.string.decoded": [
@@ -1544,31 +1391,6 @@
           "heur_id": null,
           "signatures": [],
           "value": "http://crl4.digicert.com/sha2-assured-ts.crl0"
-        },
-        {
-          "heur_id": null,
-          "signatures": [],
-          "value": "http://ocsp.digicert.com0A"
-        },
-        {
-          "heur_id": null,
-          "signatures": [],
-          "value": "http://ocsp.digicert.com0C"
-        },
-        {
-          "heur_id": null,
-          "signatures": [],
-          "value": "http://ocsp.digicert.com0L"
-        },
-        {
-          "heur_id": null,
-          "signatures": [],
-          "value": "http://ocsp.digicert.com0N"
-        },
-        {
-          "heur_id": null,
-          "signatures": [],
-          "value": "http://ocsp.digicert.com0O"
         },
         {
           "heur_id": null,

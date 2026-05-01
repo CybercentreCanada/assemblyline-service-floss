@@ -5,7 +5,7 @@
     "sections": [
       {
         "auto_collapse": false,
-        "body": "Most likely decoding functions:\naddress      score\n---------  -------\n0x10009BC4   0.95000\n0x1000B2A0   0.94800\n0x10009410   0.94400\n0x100048C0   0.93800\n0x10005700   0.93200\n0x10008A20   0.92100\n0x1000CF30   0.91100\n0x100097DF   0.89700\n0x1000BAA6   0.89400\n0x10004FD0   0.88500\n0x100058E0   0.87200\n0x10004AB3   0.87100\n0x1000C268   0.86600\n0x1000C6D4   0.86600\n0x1000AD0A   0.86100\n0x1000B795   0.85400\n0x10004750   0.83700\n0x1000C539   0.83600\n0x10005680   0.83200\n0x1000C868   0.82800\n0x100045B0   0.56100\n0x10002A20   0.55900\n0x10002FC0   0.55900\n0x100046A0   0.55800\n0x100034C0   0.55700\n0x1000BE60   0.49200\n\nFLOSS decoded 30 strings\n\nor<T> too long\nUpdate\\Rsmain.exe\nUpdate\\Setup.exe\ninstallpath\nSOFTWARE\\rising\\\ndeque<T> too long\nSUMMARY\ndef\\virusdb.cfg\nurllib.dll\n\\virusdb.cfg\n\\def\\virusdb.cfg\n\"5Srecomp.cfg\nmvengine\nThunderVer.ini\n\\ThunderVer.ini\nrsscan.dll\ninvalid string position\nstring too long\nUnknown exception\nFlsFree\nFlsSetValue\nFlsGetValue\nFlsAlloc\nkernel32.dll\nMicrosoft Visual C++ Runtime Library\nA buffer overrun has been detected which has corrupted the program's\ninternal state.  Th\nabcdefghijklmnopqrstuvwxyz\nABCDEFGHIJKLMNOPQRSTUVWXYZ\nvector<T> too long",
+        "body": "Most likely decoding functions:\naddress      score\n---------  -------\n0x10009BC4   0.95000\n0x1000B2A0   0.94800\n0x10009410   0.94400\n0x100048C0   0.93800\n0x10005700   0.93200\n0x10008A20   0.92100\n0x1000CF30   0.91100\n0x100097DF   0.89700\n0x1000BAA6   0.89400\n0x10004FD0   0.88500\n0x100058E0   0.87200\n0x10004AB3   0.87100\n0x1000C268   0.86600\n0x1000C6D4   0.86600\n0x1000AD0A   0.86100\n0x1000B795   0.85400\n0x10004750   0.83700\n0x1000C539   0.83600\n0x10005680   0.83200\n0x1000C868   0.82800\n0x100045B0   0.56100\n0x10002A20   0.55900\n0x10002FC0   0.55900\n0x100046A0   0.55800\n0x100034C0   0.55700\n0x1000BE60   0.49200\n\nFLOSS decoded 30 strings\n\nor<T> too long\nUpdate\\Rsmain.exe\nUpdate\\Setup.exe\ninstallpath\nSOFTWARE\\rising\\\ndeque<T> too long\nSUMMARY\ndef\\virusdb.cfg\nurllib.dll\n\\virusdb.cfg\n\\def\\virusdb.cfg\n\"5Srecomp.cfg\nmvengine\nThunderVer.ini\n\\ThunderVer.ini\nrsscan.dll\ninvalid string position\nstring too long\nUnknown exception\nFlsFree\nFlsSetValue\nFlsGetValue\nFlsAlloc\nkernel32.dll\nMicrosoft Visual C++ Runtime Library\nA buffer overrun has been detected which has corrupted the program's\ninternal state.  Th\nabcdefghijklmnopqrstuvwxyz\nABCDEFGHIJKLMNOPQRSTUVWXYZ\nvector<T> too long\nFlare Floss generated error messages while analyzing:\nFIXME - invalid homedir, playing along... ([Errno 17] File exists: '/var/lib/assemblyline/.envi/symcache')\n",
         "body_config": {},
         "body_format": "MEMORY_DUMP",
         "classification": "TLP:C",
@@ -25,8 +25,9 @@
           "file": {
             "name": {
               "extracted": [
-                "Update\\Rsmain.exe",
-                "Update\\Setup.exe",
+                "Rsmain.exe",
+                "Setup.exe",
+                "virusdb.cfg",
                 "urllib.dll",
                 "rsscan.dll",
                 "kernel32.dll"
@@ -94,14 +95,14 @@
           "signatures": [
             "decoded_ioc"
           ],
-          "value": "Update\\Rsmain.exe"
+          "value": "Rsmain.exe"
         },
         {
           "heur_id": 1,
           "signatures": [
             "decoded_ioc"
           ],
-          "value": "Update\\Setup.exe"
+          "value": "Setup.exe"
         },
         {
           "heur_id": 1,
@@ -123,6 +124,13 @@
             "decoded_ioc"
           ],
           "value": "urllib.dll"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "virusdb.cfg"
         }
       ],
       "file.string.decoded": [
