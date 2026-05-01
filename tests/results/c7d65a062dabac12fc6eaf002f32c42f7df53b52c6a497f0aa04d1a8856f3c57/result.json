@@ -5,6 +5,27 @@
     "sections": [
       {
         "auto_collapse": false,
+        "body": "192.168.7.59",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 0,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {
+          "network": {
+            "static": {
+              "ip": [
+                "192.168.7.59"
+              ]
+            }
+          }
+        },
+        "title_text": "FLOSS static ASCII strings",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
         "body": null,
         "body_config": {},
         "body_format": "MEMORY_DUMP",
@@ -170,6 +191,13 @@
                 "192.168.7.59"
               ]
             }
+          },
+          "network": {
+            "static": {
+              "ip": [
+                "192.168.7.59"
+              ]
+            }
           }
         },
         "title_text": "FLARE FLOSS Decoded Strings",
@@ -215,14 +243,14 @@
         {
           "heur_id": null,
           "signatures": [],
-          "value": "User-Agent"
+          "value": "User-Agent:"
         },
         {
           "heur_id": 1,
           "signatures": [
             "decoded_ioc"
           ],
-          "value": "User-Agent"
+          "value": "User-Agent:"
         },
         {
           "heur_id": null,
@@ -235,18 +263,6 @@
             "decoded_ioc"
           ],
           "value": "Windows NT"
-        },
-        {
-          "heur_id": null,
-          "signatures": [],
-          "value": "reverse"
-        },
-        {
-          "heur_id": 1,
-          "signatures": [
-            "decoded_ioc"
-          ],
-          "value": "reverse"
         }
       ],
       "file.string.decoded": [
@@ -291,6 +307,25 @@
             "decoded_ioc"
           ],
           "value": "reverse"
+        }
+      ],
+      "network.static.ip": [
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "192.168.7.59"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "192.168.7.59"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "192.168.7.59"
         }
       ]
     },
