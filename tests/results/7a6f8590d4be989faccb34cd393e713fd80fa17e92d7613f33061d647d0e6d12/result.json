@@ -16,12 +16,12 @@
           "network": {
             "static": {
               "domain": [
-                "www.w3.org",
-                "schemas.excel-dna.net"
+                "schemas.excel-dna.net",
+                "www.w3.org"
               ],
               "uri": [
-                "http://www.w3.org/2001/XMLSchema",
                 "http://www.w3.org/2001/XMLSchema-instance",
+                "http://www.w3.org/2001/XMLSchema",
                 "http://schemas.excel-dna.net/addin/2018/05/dnalibrary"
               ]
             }

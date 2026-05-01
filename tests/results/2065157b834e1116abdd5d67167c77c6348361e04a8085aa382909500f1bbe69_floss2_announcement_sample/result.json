@@ -26,6 +26,7 @@
                 "http://crl3.digicert.com/assured-cs-g1.crl00",
                 "http://crl4.digicert.com/assured-cs-g1.crl0L",
                 "https://www.digicert.com/CPS0",
+                "http://ocsp.digicert.com",
                 "http://cacerts.digicert.com/DigiCertAssuredIDCodeSigningCA-1.crt0",
                 "http://crl3.digicert.com/DigiCertAssuredIDCA-1.crl08",
                 "http://crl4.digicert.com/DigiCertAssuredIDCA-1.crl0w",
@@ -1391,6 +1392,11 @@
           "heur_id": null,
           "signatures": [],
           "value": "http://crl4.digicert.com/sha2-assured-ts.crl0"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://ocsp.digicert.com"
         },
         {
           "heur_id": null,
