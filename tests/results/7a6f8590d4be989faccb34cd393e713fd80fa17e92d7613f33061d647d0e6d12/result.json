@@ -16,39 +16,18 @@
           "network": {
             "static": {
               "domain": [
-                "schemas.excel-dna.net",
-                "www.w3.org"
+                "www.w3.org",
+                "schemas.excel-dna.net"
               ],
               "uri": [
                 "http://www.w3.org/2001/XMLSchema",
-                "http://schemas.excel-dna.net/addin/2018/05/dnalibrary",
-                "http://www.w3.org/2001/XMLSchema-instance"
+                "http://www.w3.org/2001/XMLSchema-instance",
+                "http://schemas.excel-dna.net/addin/2018/05/dnalibrary"
               ]
             }
           }
         },
         "title_text": "FLOSS static ASCII strings",
-        "zeroize_on_tag_safe": false
-      },
-      {
-        "auto_collapse": false,
-        "body": "1.1.0.3",
-        "body_config": {},
-        "body_format": "MEMORY_DUMP",
-        "classification": "TLP:C",
-        "depth": 0,
-        "heuristic": null,
-        "promote_to": null,
-        "tags": {
-          "network": {
-            "static": {
-              "ip": [
-                "1.1.0.3"
-              ]
-            }
-          }
-        },
-        "title_text": "FLOSS static UTF-16LE strings",
         "zeroize_on_tag_safe": false
       },
       {
@@ -117,13 +96,6 @@
           "heur_id": null,
           "signatures": [],
           "value": "www.w3.org"
-        }
-      ],
-      "network.static.ip": [
-        {
-          "heur_id": null,
-          "signatures": [],
-          "value": "1.1.0.3"
         }
       ],
       "network.static.uri": [

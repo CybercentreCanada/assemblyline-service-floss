@@ -55,15 +55,7 @@
         "depth": 1,
         "heuristic": null,
         "promote_to": null,
-        "tags": {
-          "file": {
-            "string": {
-              "blacklisted": [
-                "reverse"
-              ]
-            }
-          }
-        },
+        "tags": {},
         "title_text": "Group: 'reverse' Strings: 1",
         "zeroize_on_tag_safe": false
       },
@@ -119,9 +111,8 @@
           "file": {
             "string": {
               "blacklisted": [
-                "Mozilla/4.0",
-                "User-Agent",
-                "Windows NT"
+                "Windows NT",
+                "Mozilla/4.0"
               ]
             }
           }
@@ -138,7 +129,15 @@
         "depth": 1,
         "heuristic": null,
         "promote_to": null,
-        "tags": {},
+        "tags": {
+          "network": {
+            "static": {
+              "ip": [
+                "192.168.7.59"
+              ]
+            }
+          }
+        },
         "title_text": "Group: '192.168.7.59' Strings: 1",
         "zeroize_on_tag_safe": false
       },
@@ -177,10 +176,8 @@
           "file": {
             "string": {
               "blacklisted": [
-                "reverse",
-                "Mozilla/4.0",
-                "User-Agent",
-                "Windows NT"
+                "Windows NT",
+                "Mozilla/4.0"
               ],
               "decoded": [
                 "reverse",
@@ -239,18 +236,6 @@
             "decoded_ioc"
           ],
           "value": "Mozilla/4.0"
-        },
-        {
-          "heur_id": null,
-          "signatures": [],
-          "value": "User-Agent:"
-        },
-        {
-          "heur_id": 1,
-          "signatures": [
-            "decoded_ioc"
-          ],
-          "value": "User-Agent:"
         },
         {
           "heur_id": null,

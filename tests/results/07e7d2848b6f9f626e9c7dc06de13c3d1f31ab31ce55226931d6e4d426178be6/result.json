@@ -23,9 +23,7 @@
                 "ts-crl.ws.symantec.com"
               ],
               "uri": [
-                "http://ocsp.thawte.com0",
                 "http://crl.thawte.com/ThawteTimestampingCA.crl0",
-                "http://ts-ocsp.ws.symantec.com07",
                 "http://ts-aia.ws.symantec.com/tss-ca-g2.cer0",
                 "http://ts-crl.ws.symantec.com/tss-ca-g2.crl0("
               ]
@@ -127,22 +125,12 @@
         {
           "heur_id": null,
           "signatures": [],
-          "value": "http://ocsp.thawte.com0"
-        },
-        {
-          "heur_id": null,
-          "signatures": [],
           "value": "http://ts-aia.ws.symantec.com/tss-ca-g2.cer0"
         },
         {
           "heur_id": null,
           "signatures": [],
           "value": "http://ts-crl.ws.symantec.com/tss-ca-g2.crl0("
-        },
-        {
-          "heur_id": null,
-          "signatures": [],
-          "value": "http://ts-ocsp.ws.symantec.com07"
         }
       ]
     },
