@@ -13,8 +13,8 @@ RUN apt-get update && \
     $(grep -vE "^\s*(#|$)" /tmp/setup/pkglist.txt | tr "\n" " ") && \
     rm -rf /tmp/setup/pkglist.txt /var/lib/apt/lists/*
 
-# Get the latest FLOSS binary
-RUN curl -L https://github.com/fireeye/flare-floss/releases/download/v1.7.0/floss-v1.7.0-linux.zip -o floss.zip \
+# Get the current FLOSS binary
+RUN curl -L https://github.com/mandiant/flare-floss/releases/download/v3.1.1/floss-v3.1.1-linux.zip -o floss.zip \
     && unzip floss.zip -d /opt \
     && chmod +x /opt/floss \
     && rm floss.zip

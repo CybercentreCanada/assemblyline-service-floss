@@ -1,0 +1,1415 @@
+{
+  "extra": {
+    "drop_file": false,
+    "score": 500,
+    "sections": [
+      {
+        "auto_collapse": false,
+        "body": "*http://crl3.digicert.com/assured-cs-g1.crl00\n*http://crl4.digicert.com/assured-cs-g1.crl0L\nhttps://www.digicert.com/CPS0\nhttp://ocsp.digicert.com0L\n@http://cacerts.digicert.com/DigiCertAssuredIDCodeSigningCA-1.crt0\nhttps://www.digicert.com/CPS0\n2http://crl3.digicert.com/DigiCertAssuredIDCA-1.crl08\n2http://crl4.digicert.com/DigiCertAssuredIDCA-1.crl0w\nhttp://ocsp.digicert.com0A\n5http://cacerts.digicert.com/DigiCertAssuredIDCA-1.crt0\n.http://www.digicert.com/ssl-cps-repository.htm0\nhttp://ocsp.digicert.com0C\n7http://cacerts.digicert.com/DigiCertAssuredIDRootCA.crt0\n4http://crl3.digicert.com/DigiCertAssuredIDRootCA.crl0:\n4http://crl4.digicert.com/DigiCertAssuredIDRootCA.crl0\n.http://www.digicert.com/ssl-cps-repository.htm0\nhttp://ocsp.digicert.com0C\n7http://cacerts.digicert.com/DigiCertAssuredIDRootCA.crt0\n4http://crl3.digicert.com/DigiCertAssuredIDRootCA.crl0:\n4http://crl4.digicert.com/DigiCertAssuredIDRootCA.crl0\n/http://crl3.digicert.com/sha2-assured-cs-g1.crl05\n/http://crl4.digicert.com/sha2-assured-cs-g1.crl0L\nhttps://www.digicert.com/CPS0\nhttp://ocsp.digicert.com0N\nBhttp://cacerts.digicert.com/DigiCertSHA2AssuredIDCodeSigningCA.crt0\nhttp://ocsp.digicert.com0C\n7http://cacerts.digicert.com/DigiCertAssuredIDRootCA.crt0\n4http://crl4.digicert.com/DigiCertAssuredIDRootCA.crl0:\n4http://crl3.digicert.com/DigiCertAssuredIDRootCA.crl0O\nhttps://www.digicert.com/CPS0\nhttps://www.digicert.com/CPS0\n,http://crl3.digicert.com/sha2-assured-ts.crl02\n,http://crl4.digicert.com/sha2-assured-ts.crl0\nhttp://ocsp.digicert.com0O\nChttp://cacerts.digicert.com/DigiCertSHA2AssuredIDTimestampingCA.crt0\nhttp://ocsp.digicert.com0C\n7http://cacerts.digicert.com/DigiCertAssuredIDRootCA.crt0\n4http://crl4.digicert.com/DigiCertAssuredIDRootCA.crl0:\n4http://crl3.digicert.com/DigiCertAssuredIDRootCA.crl0P\nhttps://www.digicert.com/CPS0",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 0,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {
+          "network": {
+            "static": {
+              "domain": [
+                "crl3.digicert.com",
+                "crl4.digicert.com",
+                "www.digicert.com",
+                "ocsp.digicert.com",
+                "cacerts.digicert.com"
+              ],
+              "uri": [
+                "http://crl3.digicert.com/assured-cs-g1.crl00",
+                "http://crl4.digicert.com/assured-cs-g1.crl0L",
+                "https://www.digicert.com/CPS0",
+                "http://ocsp.digicert.com",
+                "http://cacerts.digicert.com/DigiCertAssuredIDCodeSigningCA-1.crt0",
+                "http://crl3.digicert.com/DigiCertAssuredIDCA-1.crl08",
+                "http://crl4.digicert.com/DigiCertAssuredIDCA-1.crl0w",
+                "http://cacerts.digicert.com/DigiCertAssuredIDCA-1.crt0",
+                "http://www.digicert.com/ssl-cps-repository.htm0",
+                "http://cacerts.digicert.com/DigiCertAssuredIDRootCA.crt0",
+                "http://crl3.digicert.com/DigiCertAssuredIDRootCA.crl0:",
+                "http://crl4.digicert.com/DigiCertAssuredIDRootCA.crl0",
+                "http://crl3.digicert.com/sha2-assured-cs-g1.crl05",
+                "http://crl4.digicert.com/sha2-assured-cs-g1.crl0L",
+                "http://cacerts.digicert.com/DigiCertSHA2AssuredIDCodeSigningCA.crt0",
+                "http://crl4.digicert.com/DigiCertAssuredIDRootCA.crl0:",
+                "http://crl3.digicert.com/DigiCertAssuredIDRootCA.crl0O",
+                "http://crl3.digicert.com/sha2-assured-ts.crl02",
+                "http://crl4.digicert.com/sha2-assured-ts.crl0",
+                "http://cacerts.digicert.com/DigiCertSHA2AssuredIDTimestampingCA.crt0",
+                "http://crl3.digicert.com/DigiCertAssuredIDRootCA.crl0P"
+              ]
+            }
+          }
+        },
+        "title_text": "FLOSS static ASCII strings",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": null,
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 0,
+        "heuristic": {
+          "attack_ids": [],
+          "frequency": 1,
+          "heur_id": 3,
+          "score": 0,
+          "score_map": {},
+          "signatures": {}
+        },
+        "promote_to": null,
+        "tags": {},
+        "title_text": "FLARE FLOSS Stacked Strings",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": ":hj\\H\\_K\\&\nC:hj\\H\\_K\\&",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: ':hj\\H\\_K\\&' Strings: 2",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "Ho?{m,HHK\noHo?{m,HHK",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: 'Ho?{m,HHK' Strings: 2",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "gj-jAjHjejajvjpj j&j",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: 'gj-jAjHjejajvjpj j&j' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "<H<:$<:}J",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: '<H<:$<:}J' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "$Ja$g+g+g1",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: '$Ja$g+g+g1' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "mr#8T#\tXJ",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: 'mr#8T#\tXJ' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "%a<# `E#\nB%a<# `E#",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: '%a<# `E#' Strings: 2",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "K<;NHaw",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: 'K<;NHaw' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "F}WMov4}F",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: 'F}WMov4}F' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "Bn}T.Mn",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: 'Bn}T.Mn' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "WppMWpp\\",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: 'WppMWpp\\' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "Q\"xnG\"`",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: 'Q\"xnG\"`' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "Gn\"{yTw`.anb|",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: 'Gn\"{yTw`.anb|' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "jXC{.ziE",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: 'jXC{.ziE' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "]|ami|K",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: ']|ami|K' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "M!?*%7!%",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: 'M!?*%7!%' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "Z)m9M(p",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: 'Z)m9M(p' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "/0-/K[v\"0@",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: '/0-/K[v\"0@' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "o+m`y3]cK3",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: 'o+m`y3]cK3' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "[zHkI+zI",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: '[zHkI+zI' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "K#Q{WbG^T{:",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: 'K#Q{WbG^T{:' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "TG>{T7Q\t\t&",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: 'TG>{T7Q\t\t&' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "@wJL8%'w^\nRwJL8%'w^",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: '@wJL8%'w^' Strings: 2",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "\"=BT=] dv\nk=BT=] dv",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: '\"=BT=] dv' Strings: 2",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "{;.?<{tp",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: '{;.?<{tp' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "\tJ:}_<o\nVJ:}_<o",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: '\tJ:}_<o' Strings: 2",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "z;lZS74llr",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: 'z;lZS74llr' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "7z~K#Dv\n.z~K#Dv",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: '7z~K#Dv' Strings: 2",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "ydy-yZycyZy",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: 'ydy-yZycyZy' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "ysZY8sYZ\nIsZY8sYZ",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: 'ysZY8sYZ' Strings: 2",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "m(Fz<(zF\nI(Fz<(zF",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: 'm(Fz<(zF' Strings: 2",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "X*XkX\"XwXAX",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: 'X*XkX\"XwXAX' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "]wfDD0&",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: ']wfDD0&' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "kksuiqomi{oiqmykjX|tkPrv`TfXkoquqq",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: 'kksuiqomi{oiqmykjX|tkPrv`TfXkoquqq' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "#>rrH}=",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: '#>rrH}=' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "]H=]HS=h]r",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: ']H=]HS=h]r' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "7x#ramX",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: '7x#ramX' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "+zJ(!M}D}Gp\t<U",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: '+zJ(!M}D}Gp\t<U' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "tOUg&x2:.",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: 'tOUg&x2:.' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "U(Q$QQ?",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: 'U(Q$QQ?' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "eKK~8t\"\",?,ex2??Rexk\nhKK~8t\"\",?,ex2??Rexk",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: 'eKK~8t\"\",?,ex2??Rexk' Strings: 2",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "r_>_%\"X,",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: 'r_>_%\"X,' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "[n;r/G/+\n%n;r/G/+",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: '[n;r/G/+' Strings: 2",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "T#&4;I;;Z",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: 'T#&4;I;;Z' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "y>P[77!",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: 'y>P[77!' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "(Z(Z(>(A(s(s(\nh(Z(Z(>(A(s(s(",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: '(Z(Z(>(A(s(s(' Strings: 2",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "(\t(,(l(z(l(z(l(",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: '(\t(,(l(z(l(z(l(' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "(b(S(l(",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: '(b(S(l(' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "(Z()(\"(((",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 1,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {},
+        "title_text": "Group: '(Z()(\"(((' Strings: 1",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "Most likely decoding functions:\naddress      score\n---------  -------\n0x140002FE4   0.98300\n0x14000251C   0.98100\n0x140003834   0.98000\n0x140005B2C   0.97900\n0x140006E94   0.97800\n0x140006A94   0.96700\n0x14000A2A0   0.96500\n0x140001E78   0.96300\n0x140001130   0.96200\n0x140001BD8   0.94500\n0x140001738   0.94200\n0x14000DFB8   0.94100\n0x1400019EC   0.92500\n0x140009B30   0.91600\n0x140011F38   0.91300\n0x140013A88   0.91200\n0x14000E056   0.91100\n0x14000E16A   0.91000\n0x140009ECC   0.90700\n0x14000B9E4   0.90400\n0x140005978   0.84200\n0x1400077B8   0.81600\n0x1400088EC   0.78800\n0x14000527C   0.78700\n0x140005530   0.78700\n0x1400055F8   0.78700\n0x140005910   0.78700\n0x140008700   0.78700\n0x140004F04   0.76300\n0x140004F68   0.76300\n0x140004FCC   0.76300\n0x14000502C   0.76300\n0x140005090   0.76300\n0x1400050F4   0.76300\n0x140005158   0.76300\n0x1400051B8   0.76300\n0x140005218   0.76300\n0x1400052E4   0.76300\n0x140005348   0.76300\n0x1400053AC   0.76300\n0x14000540C   0.76300\n0x14000546C   0.76300\n0x1400054D0   0.76300\n0x140005598   0.76300\n0x140005660   0.76300\n0x1400056C0   0.76300\n0x140005724   0.76300\n0x140005788   0.76300\n0x1400057E8   0.76300\n0x140005848   0.76300\n0x1400058AC   0.76300\n0x140008580   0.76300\n0x1400085DC   0.76300\n0x14000863C   0.76300\n0x1400086A0   0.76300\n0x140008764   0.76300\n0x1400087C4   0.76300\n0x140008828   0.76300\n0x140008888   0.76300\n0x140008954   0.76300\n0x1400069DC   0.75100\n0x140001060   0.74400\n0x140003E38   0.73400\n\nFLOSS decoded 43 strings\n\nCoInitialize\nole32.dll\nCoInitializeSecurity\nCoCreateInstance\nCoTaskMemFree\nHttpQueryInfoA\nwininet.dll\nbcrypt.dll\nBCryptOpenAlgorithmProvider\nBCryptImportKeyPair\nBCryptVerifySignature\nBCryptCloseAlgorithmProvider\nkernel32.dll\nReadFile\n%d%02d%02d\nFont Service\nNtOpenSemaphore\nNtCreateSemaphore\nNtCreateMutant\nNtQuerySystemTime\nNtOpenMutant\nNtSuspendProcess\nNtOpenThread\nNtCreateUserProcess\nNtResumeThread\nNtCreateSection\nNtCreateEvent\nNtOpenEvent\nNtOpenSection\nNtTerminateProcess\nNtMapViewOfSection\nNtQueryInformationProcess\nNtOpenKey\nNtCreateKey\nNtOpenFile\nNtAllocateVirtualMemory\nNtCreateProcess\nNtUnmapViewOfSection\nrtualMemory\nNtProtectVirtualMemory\nNtWriteVirtualMemory\nntdll.dll\nMsctLck",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 0,
+        "heuristic": {
+          "attack_ids": [],
+          "frequency": 1,
+          "heur_id": 1,
+          "score": 500,
+          "score_map": {},
+          "signatures": {
+            "decoded_ioc": 1
+          }
+        },
+        "promote_to": null,
+        "tags": {
+          "file": {
+            "name": {
+              "extracted": [
+                "ole32.dll",
+                "wininet.dll",
+                "bcrypt.dll",
+                "kernel32.dll",
+                "ntdll.dll"
+              ]
+            },
+            "string": {
+              "api": [
+                "NtSuspendProcess",
+                "NtCreateUserProcess",
+                "NtResumeThread",
+                "NtCreateSection",
+                "NtOpenEvent",
+                "NtOpenSection",
+                "NtTerminateProcess",
+                "NtMapViewOfSection",
+                "NtQueryInformationProcess",
+                "NtOpenKey",
+                "NtOpenFile",
+                "NtCreateProcess",
+                "NtUnmapViewOfSection",
+                "NtProtectVirtualMemory",
+                "NtWriteVirtualMemory"
+              ],
+              "decoded": [
+                "CoInitialize",
+                "ole32.dll",
+                "CoInitializeSecurity",
+                "CoCreateInstance",
+                "CoTaskMemFree",
+                "HttpQueryInfoA",
+                "wininet.dll",
+                "bcrypt.dll",
+                "BCryptOpenAlgorithmProvider",
+                "BCryptImportKeyPair",
+                "BCryptVerifySignature",
+                "BCryptCloseAlgorithmProvider",
+                "kernel32.dll",
+                "ReadFile",
+                "%d%02d%02d",
+                "Font Service",
+                "NtOpenSemaphore",
+                "NtCreateSemaphore",
+                "NtCreateMutant",
+                "NtQuerySystemTime",
+                "NtOpenMutant",
+                "NtSuspendProcess",
+                "NtOpenThread",
+                "NtCreateUserProcess",
+                "NtResumeThread",
+                "NtCreateSection",
+                "NtCreateEvent",
+                "NtOpenEvent",
+                "NtOpenSection",
+                "NtTerminateProcess",
+                "NtMapViewOfSection",
+                "NtQueryInformationProcess",
+                "NtOpenKey",
+                "NtCreateKey",
+                "NtOpenFile",
+                "NtAllocateVirtualMemory",
+                "NtCreateProcess",
+                "NtUnmapViewOfSection",
+                "rtualMemory",
+                "NtProtectVirtualMemory",
+                "NtWriteVirtualMemory",
+                "ntdll.dll",
+                "MsctLck"
+              ]
+            }
+          }
+        },
+        "title_text": "FLARE FLOSS Decoded Strings",
+        "zeroize_on_tag_safe": false
+      }
+    ]
+  },
+  "files": {
+    "extracted": [],
+    "supplementary": []
+  },
+  "results": {
+    "heuristics": [
+      {
+        "attack_ids": [],
+        "heur_id": 1,
+        "signatures": [
+          "decoded_ioc"
+        ]
+      },
+      {
+        "attack_ids": [],
+        "heur_id": 3,
+        "signatures": []
+      }
+    ],
+    "tags": {
+      "file.name.extracted": [
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "bcrypt.dll"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "kernel32.dll"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "ntdll.dll"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "ole32.dll"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "wininet.dll"
+        }
+      ],
+      "file.string.api": [
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtCreateProcess"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtCreateSection"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtCreateUserProcess"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtMapViewOfSection"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtOpenEvent"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtOpenFile"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtOpenKey"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtOpenSection"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtProtectVirtualMemory"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtQueryInformationProcess"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtResumeThread"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtSuspendProcess"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtTerminateProcess"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtUnmapViewOfSection"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtWriteVirtualMemory"
+        }
+      ],
+      "file.string.decoded": [
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "%d%02d%02d"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "BCryptCloseAlgorithmProvider"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "BCryptImportKeyPair"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "BCryptOpenAlgorithmProvider"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "BCryptVerifySignature"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "CoCreateInstance"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "CoInitialize"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "CoInitializeSecurity"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "CoTaskMemFree"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "Font Service"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "HttpQueryInfoA"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "MsctLck"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtAllocateVirtualMemory"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtCreateEvent"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtCreateKey"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtCreateMutant"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtCreateProcess"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtCreateSection"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtCreateSemaphore"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtCreateUserProcess"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtMapViewOfSection"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtOpenEvent"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtOpenFile"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtOpenKey"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtOpenMutant"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtOpenSection"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtOpenSemaphore"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtOpenThread"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtProtectVirtualMemory"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtQueryInformationProcess"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtQuerySystemTime"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtResumeThread"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtSuspendProcess"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtTerminateProcess"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtUnmapViewOfSection"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "NtWriteVirtualMemory"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "ReadFile"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "bcrypt.dll"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "kernel32.dll"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "ntdll.dll"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "ole32.dll"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "rtualMemory"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [
+            "decoded_ioc"
+          ],
+          "value": "wininet.dll"
+        }
+      ],
+      "network.static.domain": [
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "cacerts.digicert.com"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "crl3.digicert.com"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "crl4.digicert.com"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "ocsp.digicert.com"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "www.digicert.com"
+        }
+      ],
+      "network.static.uri": [
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://cacerts.digicert.com/DigiCertAssuredIDCA-1.crt0"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://cacerts.digicert.com/DigiCertAssuredIDCodeSigningCA-1.crt0"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://cacerts.digicert.com/DigiCertAssuredIDRootCA.crt0"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://cacerts.digicert.com/DigiCertSHA2AssuredIDCodeSigningCA.crt0"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://cacerts.digicert.com/DigiCertSHA2AssuredIDTimestampingCA.crt0"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://crl3.digicert.com/DigiCertAssuredIDCA-1.crl08"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://crl3.digicert.com/DigiCertAssuredIDRootCA.crl0:"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://crl3.digicert.com/DigiCertAssuredIDRootCA.crl0O"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://crl3.digicert.com/DigiCertAssuredIDRootCA.crl0P"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://crl3.digicert.com/assured-cs-g1.crl00"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://crl3.digicert.com/sha2-assured-cs-g1.crl05"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://crl3.digicert.com/sha2-assured-ts.crl02"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://crl4.digicert.com/DigiCertAssuredIDCA-1.crl0w"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://crl4.digicert.com/DigiCertAssuredIDRootCA.crl0"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://crl4.digicert.com/DigiCertAssuredIDRootCA.crl0:"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://crl4.digicert.com/assured-cs-g1.crl0L"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://crl4.digicert.com/sha2-assured-cs-g1.crl0L"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://crl4.digicert.com/sha2-assured-ts.crl0"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://ocsp.digicert.com"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://www.digicert.com/ssl-cps-repository.htm0"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "https://www.digicert.com/CPS0"
+        }
+      ]
+    },
+    "temp_submission_data": {}
+  }
+}
