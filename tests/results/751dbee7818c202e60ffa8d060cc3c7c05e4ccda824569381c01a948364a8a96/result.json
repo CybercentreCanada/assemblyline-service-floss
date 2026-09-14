@@ -24,7 +24,7 @@
             }
           }
         },
-        "title_text": "FLOSS static Unicode strings",
+        "title_text": "FLOSS static UTF-16LE strings",
         "zeroize_on_tag_safe": false
       }
     ]

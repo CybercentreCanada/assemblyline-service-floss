@@ -1,16 +1,121 @@
 {
   "extra": {
     "drop_file": false,
-    "score": 0,
-    "sections": []
+    "score": 10,
+    "sections": [
+      {
+        "auto_collapse": false,
+        "body": "<DnaLibrary xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" Name=\"Jack Add-In\" RuntimeVersion=\"v4.0\" ShadowCopyFiles=\"false\" DefaultReferences=\"true\" DefaultImports=\"true\" xmlns=\"http://schemas.excel-dna.net/addin/2018/05/dnalibrary\">",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 0,
+        "heuristic": null,
+        "promote_to": null,
+        "tags": {
+          "network": {
+            "static": {
+              "domain": [
+                "schemas.excel-dna.net",
+                "www.w3.org"
+              ],
+              "uri": [
+                "http://www.w3.org/2001/XMLSchema-instance",
+                "http://www.w3.org/2001/XMLSchema",
+                "http://schemas.excel-dna.net/addin/2018/05/dnalibrary"
+              ]
+            }
+          }
+        },
+        "title_text": "FLOSS static ASCII strings",
+        "zeroize_on_tag_safe": false
+      },
+      {
+        "auto_collapse": false,
+        "body": "Most likely decoding functions:\naddress      score\n---------  -------\n0x1800191F5   0.95300\n0x18001905E   0.92600\n0x180019122   0.91600\n0x18001C4AC   0.91300\n0x1800176A8   0.90400\n0x1800192EE   0.90300\n0x18001784C   0.89500\n0x18001D454   0.89100\n0x1800192F5   0.88600\n0x180025DB0   0.87200\n0x180017E84   0.86600\n0x18001929C   0.85900\n0x1800019C0   0.82500\n0x180027180   0.81900\n0x180012060   0.81600\n0x180015F52   0.81300\n0x18001BA7A   0.81300\n0x180015F02   0.81200\n0x180015F11   0.81200\n0x180018873   0.81200\n0x180027600   0.56700\n\nFLOSS decoded 2 strings\n\nCreateSandboxedAppDomain\nv2.0.50727",
+        "body_config": {},
+        "body_format": "MEMORY_DUMP",
+        "classification": "TLP:C",
+        "depth": 0,
+        "heuristic": {
+          "attack_ids": [],
+          "frequency": 1,
+          "heur_id": 1,
+          "score": 10,
+          "score_map": {},
+          "signatures": {}
+        },
+        "promote_to": null,
+        "tags": {
+          "file": {
+            "string": {
+              "decoded": [
+                "CreateSandboxedAppDomain",
+                "v2.0.50727"
+              ]
+            }
+          }
+        },
+        "title_text": "FLARE FLOSS Decoded Strings",
+        "zeroize_on_tag_safe": false
+      }
+    ]
   },
   "files": {
     "extracted": [],
     "supplementary": []
   },
   "results": {
-    "heuristics": [],
-    "tags": {},
+    "heuristics": [
+      {
+        "attack_ids": [],
+        "heur_id": 1,
+        "signatures": []
+      }
+    ],
+    "tags": {
+      "file.string.decoded": [
+        {
+          "heur_id": 1,
+          "signatures": [],
+          "value": "CreateSandboxedAppDomain"
+        },
+        {
+          "heur_id": 1,
+          "signatures": [],
+          "value": "v2.0.50727"
+        }
+      ],
+      "network.static.domain": [
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "schemas.excel-dna.net"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "www.w3.org"
+        }
+      ],
+      "network.static.uri": [
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://schemas.excel-dna.net/addin/2018/05/dnalibrary"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://www.w3.org/2001/XMLSchema"
+        },
+        {
+          "heur_id": null,
+          "signatures": [],
+          "value": "http://www.w3.org/2001/XMLSchema-instance"
+        }
+      ]
+    },
     "temp_submission_data": {}
   }
 }
