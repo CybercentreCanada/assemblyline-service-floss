@@ -1,4 +1,4 @@
-""" FLOSS service """
+"""FLOSS service."""
 
 import re
 import time
@@ -6,7 +6,7 @@ from subprocess import PIPE, Popen, TimeoutExpired
 from typing import Iterable, List, Optional, Tuple
 
 from assemblyline.common.str_utils import safe_str
-from assemblyline_service_utilities.common.balbuzard.patterns import PatternMatch
+from assemblyline_service_utilities.common.extractor.iocs import find_ioc_tags
 from assemblyline_v4_service.common.base import ServiceBase
 from assemblyline_v4_service.common.request import ServiceRequest
 from assemblyline_v4_service.common.result import BODY_FORMAT, Heuristic, Result, ResultSection
@@ -16,7 +16,7 @@ FLOSS = "/opt/floss"
 
 
 def group_strings(strings: Iterable[str]) -> List[List[str]]:
-    """Groups strings by similarity"""
+    """Groups strings by similarity."""
     # prevent double iteration if strings is a generator
     strings = list(strings)
 
@@ -36,16 +36,16 @@ def group_strings(strings: Iterable[str]) -> List[List[str]]:
 
 
 def ioc_tag(text: bytes, result: ResultSection, just_network: bool = False) -> bool:
-    """Tags iocs found in text to result
+    """Tags iocs found in text to result.
 
     text: text to search for iocs
     result: ResultSection to tag with iocs
     just_network: whether non-network iocs should be skipped
 
-    returns: whether iocs are found
+    Returns:
+       Whether iocs are found.
     """
-    pattern = PatternMatch()
-    ioc = pattern.ioc_match(text, bogon_ip=True, just_network=just_network)
+    ioc = find_ioc_tags(text, network_only=just_network)
     for kind, values in ioc.items():
         for val in values:
             result.add_tag(kind, val)
@@ -54,7 +54,7 @@ def ioc_tag(text: bytes, result: ResultSection, just_network: bool = False) -> b
 
 
 def static_result(section: List[bytes], max_length: int, st_max_size: int) -> Optional[ResultSection]:
-    """Generates a ResultSection from floss static strings output section"""
+    """Generates a ResultSection from floss static strings output section."""
     header = section[0]
     lines = section[1:]
 
@@ -68,7 +68,7 @@ def static_result(section: List[bytes], max_length: int, st_max_size: int) -> Op
 
 
 def stack_result(section: List[bytes]) -> Optional[ResultSection]:
-    """Generates a ResultSection from floss stacked strings output section"""
+    """Generates a ResultSection from floss stacked strings output section."""
     result = ResultSection("FLARE FLOSS Stacked Strings", body_format=BODY_FORMAT.MEMORY_DUMP, heuristic=Heuristic(3))
     assert result.heuristic
     strings = section[1:]
@@ -94,7 +94,7 @@ def stack_result(section: List[bytes]) -> Optional[ResultSection]:
 
 
 def decoded_result(text: bytes) -> Optional[ResultSection]:
-    """Generates a ResultSection from floss decoded strings output section"""
+    """Generates a ResultSection from floss decoded strings output section."""
     lines = text.splitlines()
     lines[0] = b"Most likely decoding functions:"
     body = b"\n".join(lines[:-1])
@@ -117,7 +117,7 @@ def decoded_result(text: bytes) -> Optional[ResultSection]:
 
 
 class Floss(ServiceBase):
-    """Service using the FireEye Labs Obfuscated String Solver
+    """Service using the FireEye Labs Obfuscated String Solver.
 
     see https://github.com/fireeye/flare-floss for documentation
     on the FLOSS tool
@@ -199,13 +199,14 @@ class Floss(ServiceBase):
                 result.add_section(result_section)
 
     def handle_process(self, process: Popen[bytes], timeout: float, command_name: str) -> Tuple[bytes, bytes, bool]:
-        """Helper method for handling a subprocess
+        """Helper method for handling a subprocess.
 
         process: the running subprocess
         timeout: the length of time to wait for the subprocess
         command_name: the name of the command running in the subprocess
 
-        returns: the standard output and error of the process + whether if the processed timed out
+        Returns:
+            The standard output and error of the process + whether if the processed timed out.
         """
         timed_out = False
         try:
